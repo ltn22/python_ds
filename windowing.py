@@ -103,7 +103,8 @@ def detect_edges(
         return []
 
     values = df["valeur_W"].to_numpy(dtype=float)
-    t_s    = (pd.to_datetime(df["timestamp"]).astype("int64") // 1_000_000_000).to_numpy()
+    ts     = pd.to_datetime(df["timestamp"], utc=True)
+    t_s    = (ts - pd.Timestamp("1970-01-01", tz="UTC")).dt.total_seconds().astype(int).to_numpy()
 
     edges     = []
     last_edge = -min_gap_s  # permet de déclencher dès le début
