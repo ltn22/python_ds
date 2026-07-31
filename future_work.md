@@ -16,6 +16,23 @@ sur des outils choisis arbitrairement.
   frigo par périodicité. Les deux méthodes convergent sur le même résultat
   (~17 min pour le frigo fatigué), ce qui renforce le message pédagogique.
 
+- **CNN1D** (Partie 3, section 3.7) — PyTorch ajouté aux dépendances
+  (TensorFlow ne supporte pas Python 3.13, contrairement à `trainer/` qui
+  tourne sur un venv dédié ; torch fonctionne directement ici). Objectif de
+  départ : montrer que 36 exemples ne suffisent pas pour du deep learning.
+  Résultat réel, contraire à l'attente : le CNN atteint 100% d'accuracy même
+  avec **un seul exemple par classe**. Testé empiriquement (script scratch)
+  jusqu'à 1 exemple/classe sur 5 tirages aléatoires : 83-100% d'accuracy.
+  Le notebook a été réécrit pour rapporter ce résultat honnêtement plutôt que
+  la conclusion initialement prévue : nos 3 appareils synthétiques ont des
+  formes trop caricaturalement distinctes (plate / cyclique / multi-phases)
+  pour révéler un vrai besoin en données — c'est une propriété du jeu de
+  données, pas du deep learning en général. La section se termine sur une
+  cellule libre invitant à complexifier le problème (bruit, appareils plus
+  proches en forme) pour essayer de faire décrocher le CNN, et un QCM sur
+  pourquoi de vraies données (foyers différents, usure, marques) seraient
+  un test plus dur et plus honnête.
+
 ## Recommandé en priorité : Partie 4 — CUSUM et fusion de sessions
 
 Motivation directe et concrète : dans la Partie 3 (section 3.1), le
@@ -59,7 +76,6 @@ autres appareils qui sont chacun un profil quasi unique).
 | `scipy.signal.find_peaks`, `scipy.stats.skew/kurtosis` | `trainer/features.py` | déjà installé (dépendance de scikit-learn) ; évite de réinventer certains calculs à la main |
 | Run-length encoding | `trainer/features.py` (`_rle`) | durées ON/OFF sans boucle manuelle `np.diff`/`np.where` |
 | Coefficient de variation, skewness, kurtosis | `trainer/features.py` | features statistiques au-delà de moyenne/écart-type |
-| CNN1D (TensorFlow/Keras) | `trainer/train.py --no-cnn` (optionnel) | classification sur signal brut, alternative au DTW pour la Partie 3 |
 | HDBSCAN / UMAP | deps optionnelles de `trainer/` | clustering non supervisé, découverte de signatures sans labels |
 | NILMTK (Hart85, CO, FHMM) | `home-control/nilmtk-poc/` | algorithmes historiques de la recherche NILM académique, comparaison avec le RF « maison » |
 | [nilmtk-contrib](https://github.com/nilmtk/nilmtk-contrib) | lien fourni par l'utilisateur | modèles deep learning pour NILM (seq2point, seq2seq, RNN, DAE...) — direction recherche actuelle |
@@ -69,9 +85,9 @@ autres appareils qui sont chacun un profil quasi unique).
 
 ## Idée d'enchaînement
 
-1. **Partie 4** : CUSUM + fusion de sessions (corrige le bug de la Partie 3)
-2. **Partie 5** (éventuelle) : CNN1D vs Random Forest vs DTW — trois façons de
-   classifier, ou clustering non supervisé (HDBSCAN/UMAP) pour découvrir des
-   appareils sans labels
+1. **Partie 4** : CUSUM + fusion de sessions (corrige le bug de la Partie 3),
+   + lave-linge multi-programmes (appareil irrégulier)
+2. **Partie 5** (éventuelle) : clustering non supervisé (HDBSCAN/UMAP) pour
+   découvrir des appareils sans labels
 3. **Partie 6** (éventuelle) : NILMTK et les algorithmes académiques (Hart85,
    CO, FHMM) en comparaison avec le pipeline « maison »
