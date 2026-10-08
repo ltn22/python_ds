@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="archBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0e172a"/>
+    </linearGradient>
+
+    <!-- Node Gradients -->
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+
+    <linearGradient id="weightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </linearGradient>
+
+    <linearGradient id="biasGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="sumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+
+    <linearGradient id="actGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+
+    <linearGradient id="outGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="archShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="glowCircle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Marker Arrow -->
+    <marker id="cyanArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="purpleArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a855f7"/>
+    </marker>
+    <marker id="blueArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="greenArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="amberArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Container -->
+  <rect x="2" y="2" width="936" height="496" rx="20" fill="url(#archBgGrad)" stroke="#1e293b" stroke-width="2" filter="url(#archShadow)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="200" height="26" rx="13" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="44" cy="35" r="5" fill="#a855f7"/>
+  <text x="56" y="39" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#cbd5e1" letter-spacing="0.5">MODÈLE MATHÉMATIQUE</text>
+
+  <text x="30" y="76" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Architecture &amp; Flux de Calcul du Perceptron</text>
+  <text x="30" y="98" font-family="system-ui, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">Propagation avant vectorisée : de l'observation brute à la décision binaire</text>
+
+  <!-- Stage Step Labels at Top -->
+  <!-- Col 1: Inputs -->
+  <rect x="50" y="118" width="100" height="24" rx="6" fill="#0369a1" fill-opacity="0.25" stroke="#0284c7" stroke-width="1"/>
+  <text x="100" y="134" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#38bdf8" text-anchor="middle">1. ENTRÉES (X)</text>
+
+  <!-- Col 2: Weights -->
+  <rect x="220" y="118" width="110" height="24" rx="6" fill="#6d28d9" fill-opacity="0.25" stroke="#7c3aed" stroke-width="1"/>
+  <text x="275" y="134" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#c084fc" text-anchor="middle">2. POIDS (W)</text>
+
+  <!-- Col 3: Sum -->
+  <rect x="420" y="118" width="120" height="24" rx="6" fill="#1e40af" fill-opacity="0.25" stroke="#2563eb" stroke-width="1"/>
+  <text x="480" y="134" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#60a5fa" text-anchor="middle">3. SOMME (Z)</text>
+
+  <!-- Col 4: Activation -->
+  <rect x="630" y="118" width="120" height="24" rx="6" fill="#9d174d" fill-opacity="0.25" stroke="#ec4899" stroke-width="1"/>
+  <text x="690" y="134" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#f472b6" text-anchor="middle">4. SEUIL f(z)</text>
+
+  <!-- Col 5: Output -->
+  <rect x="815" y="118" width="85" height="24" rx="6" fill="#065f46" fill-opacity="0.25" stroke="#10b981" stroke-width="1"/>
+  <text x="857" y="134" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#34d399" text-anchor="middle">5. SORTIE</text>
+
+  <!-- ================= INPUT NODES ================= -->
+  <!-- x1 -->
+  <circle cx="100" cy="180" r="24" fill="url(#inputGrad)" stroke="#38bdf8" stroke-width="2" filter="url(#archShadow)"/>
+  <text x="100" y="186" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">x₁</text>
+
+  <!-- x2 -->
+  <circle cx="100" cy="260" r="24" fill="url(#inputGrad)" stroke="#38bdf8" stroke-width="2" filter="url(#archShadow)"/>
+  <text x="100" y="266" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">x₂</text>
+
+  <!-- Dots for xm -->
+  <circle cx="100" cy="315" r="3" fill="#64748b"/>
+  <circle cx="100" cy="328" r="3" fill="#64748b"/>
+  <circle cx="100" cy="341" r="3" fill="#64748b"/>
+
+  <!-- xm -->
+  <circle cx="100" cy="380" r="24" fill="url(#inputGrad)" stroke="#38bdf8" stroke-width="2" filter="url(#archShadow)"/>
+  <text x="100" y="386" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">xₘ</text>
+
+  <!-- ================= WEIGHT NODES ================= -->
+  <!-- w1 -->
+  <path d="M 124 180 L 220 180" stroke="#38bdf8" stroke-width="2" marker-end="url(#cyanArrow)"/>
+  <rect x="225" y="158" width="100" height="44" rx="8" fill="url(#weightGrad)" stroke="#a855f7" stroke-width="1.5" filter="url(#archShadow)"/>
+  <text x="275" y="185" font-family="Consolas, monospace" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">× w₁</text>
+
+  <!-- w2 -->
+  <path d="M 124 260 L 220 260" stroke="#38bdf8" stroke-width="2" marker-end="url(#cyanArrow)"/>
+  <rect x="225" y="238" width="100" height="44" rx="8" fill="url(#weightGrad)" stroke="#a855f7" stroke-width="1.5" filter="url(#archShadow)"/>
+  <text x="275" y="265" font-family="Consolas, monospace" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">× w₂</text>
+
+  <!-- wm -->
+  <path d="M 124 380 L 220 380" stroke="#38bdf8" stroke-width="2" marker-end="url(#cyanArrow)"/>
+  <rect x="225" y="358" width="100" height="44" rx="8" fill="url(#weightGrad)" stroke="#a855f7" stroke-width="1.5" filter="url(#archShadow)"/>
+  <text x="275" y="385" font-family="Consolas, monospace" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">× wₘ</text>
+
+  <!-- Connections from Weights to Sum -->
+  <path d="M 325 180 C 375 180, 395 240, 430 265" stroke="#a855f7" stroke-width="2" fill="none" marker-end="url(#purpleArrow)"/>
+  <path d="M 325 260 L 420 270" stroke="#a855f7" stroke-width="2" fill="none" marker-end="url(#purpleArrow)"/>
+  <path d="M 325 380 C 375 380, 395 305, 430 285" stroke="#a855f7" stroke-width="2" fill="none" marker-end="url(#purpleArrow)"/>
+
+  <!-- ================= BIAS NODE (b) ================= -->
+  <g filter="url(#archShadow)">
+    <rect x="425" y="405" width="110" height="42" rx="21" fill="url(#biasGrad)" stroke="#f59e0b" stroke-width="2"/>
+    <text x="480" y="430" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Biais (b)</text>
+  </g>
+  <path d="M 480 405 L 480 340" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#amberArrow)"/>
+  <text x="495" y="375" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fbbf24">+ b</text>
+
+  <!-- ================= SUMMATION NODE (∑) ================= -->
+  <g filter="url(#archShadow)">
+    <circle cx="480" cy="275" r="54" fill="url(#sumGrad)" stroke="#60a5fa" stroke-width="2.5"/>
+    <text x="480" y="270" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">∑</text>
+    <text x="480" y="292" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#bfdbfe" text-anchor="middle">z = w·x + b</text>
+    <text x="480" y="306" font-family="Consolas, monospace" font-size="9" fill="#93c5fd" text-anchor="middle">(X @ w + b)</text>
+  </g>
+
+  <!-- Connection from Sum to Activation -->
+  <path d="M 534 275 L 618 275" stroke="#60a5fa" stroke-width="3" marker-end="url(#blueArrow)"/>
+  <text x="575" y="265" font-family="Consolas, monospace" font-size="12" font-weight="700" fill="#93c5fd" text-anchor="middle">z</text>
+
+  <!-- ================= ACTIVATION FUNCTION (f) ================= -->
+  <g filter="url(#archShadow)">
+    <rect x="625" y="215" width="130" height="120" rx="14" fill="#1e162e" stroke="#ec4899" stroke-width="2"/>
+    <text x="690" y="238" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f472b6" text-anchor="middle">Fonction Seuil f(z)</text>
+    
+    <!-- Mini Step Plot inside box -->
+    <!-- Axes -->
+    <line x1="645" y1="285" x2="735" y2="285" stroke="#475569" stroke-width="1.2"/>
+    <line x1="690" y1="250" x2="690" y2="315" stroke="#475569" stroke-width="1.2"/>
+    <!-- Step Curve -->
+    <line x1="650" y1="305" x2="690" y2="305" stroke="#f472b6" stroke-width="2.5"/>
+    <circle cx="690" cy="305" r="3" fill="#1e162e" stroke="#f472b6" stroke-width="2"/>
+    <line x1="690" y1="265" x2="730" y2="265" stroke="#f472b6" stroke-width="2.5"/>
+    <circle cx="690" cy="265" r="3" fill="#f472b6"/>
+    <!-- Plot labels -->
+    <text x="642" y="308" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">0</text>
+    <text x="642" y="268" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">1</text>
+    <text x="690" y="327" font-family="system-ui, sans-serif" font-size="9" fill="#cbd5e1" text-anchor="middle">z = 0</text>
+  </g>
+
+  <!-- Connection from Activation to Output -->
+  <path d="M 755 275 L 825 275" stroke="#34d399" stroke-width="3" marker-end="url(#greenArrow)"/>
+  <text x="790" y="265" font-family="Consolas, monospace" font-size="12" font-weight="700" fill="#6ee7b7" text-anchor="middle">f(z)</text>
+
+  <!-- ================= OUTPUT NODE (ŷ) ================= -->
+  <g filter="url(#archShadow)">
+    <circle cx="858" cy="275" r="32" fill="url(#outGrad)" stroke="#34d399" stroke-width="2.5"/>
+    <text x="858" y="278" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">ŷ</text>
+    <text x="858" y="295" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#d1fae5" text-anchor="middle">∈ {0, 1}</text>
+  </g>
+
+  <!-- Legend / Info strip at bottom -->
+  <rect x="30" y="445" width="360" height="26" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <text x="42" y="462" font-family="Consolas, monospace" font-size="11" fill="#38bdf8">z = np.dot(X, w) + b</text>
+  <text x="210" y="462" font-family="Consolas, monospace" font-size="11" fill="#f472b6">y_pred = np.where(z &gt;= 0, 1, 0)</text>
+</svg>

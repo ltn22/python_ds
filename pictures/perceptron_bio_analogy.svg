@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0d1322"/>
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardBioGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f293a"/>
+      <stop offset="100%" stop-color="#091e2c"/>
+    </linearGradient>
+
+    <linearGradient id="cardMathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#241442"/>
+      <stop offset="100%" stop-color="#180d30"/>
+    </linearGradient>
+
+    <!-- Arrow Gradient -->
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-10%" width="110%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <filter id="glowBio" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Marker Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+
+  <!-- Main Background Container -->
+  <rect x="2" y="2" width="856" height="456" rx="20" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Top Title Pill & Badge -->
+  <rect x="30" y="24" width="230" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="44" cy="38" r="5" fill="#38bdf8"/>
+  <text x="56" y="43" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#94a3b8" letter-spacing="0.5">ANALOGIE FONDATRICE</text>
+
+  <text x="30" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Du Neurone Biologique au Perceptron Formel</text>
+  <text x="30" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">Modélisation mathématique du neurone cérébral (McCulloch &amp; Pitts 1943 — Rosenblatt 1957)</text>
+
+  <!-- Column Headers -->
+  <!-- Left Header: Biologie -->
+  <rect x="30" y="126" width="360" height="34" rx="8" fill="#0c4a6e" fill-opacity="0.35" stroke="#0284c7" stroke-width="1"/>
+  <text x="45" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">🧬 NEURONE BIOLOGIQUE (Cerveau)</text>
+
+  <!-- Right Header: Mathématiques -->
+  <rect x="470" y="126" width="360" height="34" rx="8" fill="#581c87" fill-opacity="0.35" stroke="#9333ea" stroke-width="1"/>
+  <text x="485" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#c084fc">⚙️ MODÈLE FORMEL (Perceptron NumPy)</text>
+
+  <!-- Row 1: Dendrites -> Entrées -->
+  <!-- Left Box -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="172" width="360" height="54" rx="10" fill="url(#cardBioGrad)" stroke="#0284c7" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="54" cy="199" r="14" fill="#0369a1" fill-opacity="0.5"/>
+    <text x="54" y="204" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#38bdf8">🌿</text>
+    <text x="78" y="193" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Dendrites</text>
+    <text x="78" y="211" font-family="system-ui, sans-serif" font-size="12" fill="#7dd3fc">Réception des signaux bioélectriques</text>
+  </g>
+
+  <!-- Connector Line 1 -->
+  <path d="M 390 199 L 462 199" stroke="url(#arrowGrad)" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Right Box -->
+  <g filter="url(#shadow)">
+    <rect x="470" y="172" width="360" height="54" rx="10" fill="url(#cardMathGrad)" stroke="#9333ea" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="494" cy="199" r="14" fill="#6b21a8" fill-opacity="0.5"/>
+    <text x="494" y="204" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#c084fc">📊</text>
+    <text x="518" y="193" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Entrées Numériques</text>
+    <text x="518" y="211" font-family="Consolas, monospace" font-size="12" fill="#d8b4fe">x = [x₁, x₂, ..., xₘ]  (features)</text>
+  </g>
+
+  <!-- Row 2: Synapses -> Poids -->
+  <!-- Left Box -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="238" width="360" height="54" rx="10" fill="url(#cardBioGrad)" stroke="#0284c7" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="54" cy="265" r="14" fill="#0369a1" fill-opacity="0.5"/>
+    <text x="54" y="270" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#38bdf8">⚡</text>
+    <text x="78" y="259" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Synapses (Force synaptique)</text>
+    <text x="78" y="277" font-family="system-ui, sans-serif" font-size="12" fill="#7dd3fc">Efficacité modulable par l'apprentissage</text>
+  </g>
+
+  <!-- Connector Line 2 -->
+  <path d="M 390 265 L 462 265" stroke="url(#arrowGrad)" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Right Box -->
+  <g filter="url(#shadow)">
+    <rect x="470" y="238" width="360" height="54" rx="10" fill="url(#cardMathGrad)" stroke="#9333ea" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="494" cy="265" r="14" fill="#6b21a8" fill-opacity="0.5"/>
+    <text x="494" y="270" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#c084fc">⚖️</text>
+    <text x="518" y="259" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Poids Synaptiques</text>
+    <text x="518" y="277" font-family="Consolas, monospace" font-size="12" fill="#d8b4fe">w = [w₁, w₂, ..., wₘ]  (weights)</text>
+  </g>
+
+  <!-- Row 3: Soma -> Somme & Biais -->
+  <!-- Left Box -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="304" width="360" height="54" rx="10" fill="url(#cardBioGrad)" stroke="#0284c7" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="54" cy="331" r="14" fill="#0369a1" fill-opacity="0.5"/>
+    <text x="54" y="336" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#38bdf8">🧪</text>
+    <text x="78" y="325" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Corps Cellulaire (Soma)</text>
+    <text x="78" y="343" font-family="system-ui, sans-serif" font-size="12" fill="#7dd3fc">Intégration et potentiel membranaire</text>
+  </g>
+
+  <!-- Connector Line 3 -->
+  <path d="M 390 331 L 462 331" stroke="url(#arrowGrad)" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Right Box -->
+  <g filter="url(#shadow)">
+    <rect x="470" y="304" width="360" height="54" rx="10" fill="url(#cardMathGrad)" stroke="#9333ea" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="494" cy="331" r="14" fill="#6b21a8" fill-opacity="0.5"/>
+    <text x="494" y="336" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#c084fc">➕</text>
+    <text x="518" y="325" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Somme Pondérée + Biais</text>
+    <text x="518" y="343" font-family="Consolas, monospace" font-size="12" fill="#d8b4fe">z = ∑ (wⱼ · xⱼ) + b  (combinaison linéaire)</text>
+  </g>
+
+  <!-- Row 4: Axone -> Seuil -->
+  <!-- Left Box -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="370" width="360" height="54" rx="10" fill="url(#cardBioGrad)" stroke="#0284c7" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="54" cy="397" r="14" fill="#0369a1" fill-opacity="0.5"/>
+    <text x="54" y="402" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#38bdf8">📡</text>
+    <text x="78" y="391" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Axone &amp; Décharge</text>
+    <text x="78" y="409" font-family="system-ui, sans-serif" font-size="12" fill="#7dd3fc">Potentiel d'action tout-ou-rien (0 ou 1)</text>
+  </g>
+
+  <!-- Connector Line 4 -->
+  <path d="M 390 397 L 462 397" stroke="url(#arrowGrad)" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Right Box -->
+  <g filter="url(#shadow)">
+    <rect x="470" y="370" width="360" height="54" rx="10" fill="url(#cardMathGrad)" stroke="#9333ea" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="494" cy="397" r="14" fill="#6b21a8" fill-opacity="0.5"/>
+    <text x="494" y="402" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle" fill="#c084fc">🎯</text>
+    <text x="518" y="391" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">Fonction d'Activation (Seuil)</text>
+    <text x="518" y="409" font-family="Consolas, monospace" font-size="12" fill="#d8b4fe">ŷ = 1 si z ≥ 0 sinon 0  (Heaviside)</text>
+  </g>
+</svg>

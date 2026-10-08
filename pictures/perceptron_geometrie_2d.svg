@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="geomBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0e172a"/>
+    </linearGradient>
+
+    <!-- Zone Positive Gradient (Class 1) -->
+    <linearGradient id="zonePosGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.25"/>
+    </linearGradient>
+
+    <!-- Zone Negative Gradient (Class 0) -->
+    <linearGradient id="zoneNegGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#fb7185" stop-opacity="0.04"/>
+    </linearGradient>
+
+    <!-- Line Gradient -->
+    <linearGradient id="lineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="geomShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="axisArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="normalArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="pointerArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#ec4899"/>
+    </marker>
+  </defs>
+
+  <!-- Container -->
+  <rect x="2" y="2" width="936" height="516" rx="20" fill="url(#geomBgGrad)" stroke="#1e293b" stroke-width="2" filter="url(#geomShadow)"/>
+
+  <!-- Header -->
+  <rect x="30" y="22" width="220" height="26" rx="13" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="44" cy="35" r="5" fill="#38bdf8"/>
+  <text x="56" y="39" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#cbd5e1" letter-spacing="0.5">GÉOMÉTRIE DE LA DÉCISION</text>
+
+  <text x="30" y="74" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">La Droite de Séparation dans le Plan 2D</text>
+  <text x="30" y="96" font-family="system-ui, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">Comment les poids w et le biais b découpent l'espace en deux demi-plans de prédiction</text>
+
+  <!-- ================= CARTESIAN PLANE (Left 560px) ================= -->
+  <!-- Grid background box -->
+  <rect x="40" y="120" width="500" height="360" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.2"/>
+
+  <!-- Grid Lines -->
+  <g stroke="#1e293b" stroke-width="0.8" stroke-dasharray="3,3">
+    <line x1="90" y1="120" x2="90" y2="480"/>
+    <line x1="150" y1="120" x2="150" y2="480"/>
+    <line x1="210" y1="120" x2="210" y2="480"/>
+    <line x1="270" y1="120" x2="270" y2="480"/>
+    <line x1="330" y1="120" x2="330" y2="480"/>
+    <line x1="390" y1="120" x2="390" y2="480"/>
+    <line x1="450" y1="120" x2="450" y2="480"/>
+
+    <line x1="40" y1="170" x2="540" y2="170"/>
+    <line x1="40" y1="230" x2="540" y2="230"/>
+    <line x1="40" y1="290" x2="540" y2="290"/>
+    <line x1="40" y1="350" x2="540" y2="350"/>
+    <line x1="40" y1="410" x2="540" y2="410"/>
+  </g>
+
+  <!-- Shaded Region: Positive (z >= 0) / Class 1 -->
+  <!-- Line goes approximately from (100, 460) to (480, 140) -->
+  <polygon points="100,460 480,140 540,140 540,120 40,120 40,120 540,120 540,480 120,480" fill="url(#zonePosGrad)"/>
+
+  <!-- Shaded Region: Negative (z < 0) / Class 0 -->
+  <polygon points="40,120 100,460 120,480 40,480" fill="url(#zoneNegGrad)"/>
+
+  <!-- Coordinate Axes -->
+  <!-- x1 Axis (horizontal) -->
+  <line x1="70" y1="440" x2="520" y2="440" stroke="#94a3b8" stroke-width="2" marker-end="url(#axisArrow)"/>
+  <text x="525" y="445" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9">x₁</text>
+
+  <!-- x2 Axis (vertical) -->
+  <line x1="120" y1="460" x2="120" y2="135" stroke="#94a3b8" stroke-width="2" marker-end="url(#axisArrow)"/>
+  <text x="115" y="130" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f1f5f9" text-anchor="middle">x₂</text>
+
+  <!-- Origin (0,0) -->
+  <text x="105" y="455" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">O</text>
+
+  <!-- Decision Boundary Line (z = 0) -->
+  <line x1="85" y1="475" x2="495" y2="130" stroke="url(#lineGrad)" stroke-width="3.5" filter="url(#geomShadow)"/>
+
+  <!-- Decision Line Equation Callout -->
+  <path d="M 450 145 Q 470 170 410 185" stroke="#ec4899" stroke-width="1.5" fill="none" marker-end="url(#pointerArrow)"/>
+  <rect x="250" y="168" width="150" height="26" rx="6" fill="#1e1329" stroke="#ec4899" stroke-width="1"/>
+  <text x="325" y="185" font-family="Consolas, monospace" font-size="12" font-weight="700" fill="#f472b6" text-anchor="middle">Frontière z = 0</text>
+
+  <!-- Intercept on x2-axis: (0, -b/w2) -->
+  <circle cx="120" cy="445" r="4.5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="65" y="430" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#fbbf24">-b / w₂</text>
+  <line x1="95" y1="432" x2="114" y2="442" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Normal Vector w = [w1, w2] -->
+  <!-- Originates on the line at (290, 302), pointing perpendicular into class 1: dx = 65, dy = -77 -->
+  <line x1="290" y1="302" x2="385" y2="190" stroke="#38bdf8" stroke-width="3" marker-end="url(#normalArrow)"/>
+  
+  <!-- Right-angle symbol -->
+  <path d="M 300 293 L 309 301 L 299 310" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+
+  <!-- Normal Vector Label Badge -->
+  <rect x="365" y="210" width="165" height="38" rx="8" fill="#082f49" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="447" y="226" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">Vecteur normal w</text>
+  <text x="447" y="240" font-family="Consolas, monospace" font-size="10" fill="#bae6fd" text-anchor="middle">w = [w₁, w₂] ⊥ Droite</text>
+
+  <!-- ================= DATA SAMPLES ================= -->
+  <!-- Class 1 Samples (z > 0) -> Cyan Dots with "+" -->
+  <g filter="url(#geomShadow)">
+    <!-- Point 1 -->
+    <circle cx="360" cy="280" r="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <text x="360" y="284" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+    <!-- Point 2 -->
+    <circle cx="440" cy="270" r="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <text x="440" y="274" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+    <!-- Point 3 -->
+    <circle cx="480" cy="330" r="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <text x="480" y="334" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+    <!-- Point 4 -->
+    <circle cx="410" cy="360" r="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <text x="410" y="364" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+    <!-- Point 5 -->
+    <circle cx="330" cy="340" r="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <text x="330" y="344" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+  </g>
+
+  <!-- Class 0 Samples (z < 0) -> Coral/Rose Dots with "0" -->
+  <g filter="url(#geomShadow)">
+    <!-- Point 1 -->
+    <circle cx="160" cy="390" r="9" fill="#e11d48" stroke="#fb7185" stroke-width="2"/>
+    <text x="160" y="394" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">0</text>
+    <!-- Point 2 -->
+    <circle cx="210" cy="420" r="9" fill="#e11d48" stroke="#fb7185" stroke-width="2"/>
+    <text x="210" y="424" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">0</text>
+    <!-- Point 3 -->
+    <circle cx="150" cy="460" r="9" fill="#e11d48" stroke="#fb7185" stroke-width="2"/>
+    <text x="150" y="464" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">0</text>
+    <!-- Point 4 -->
+    <circle cx="240" cy="370" r="9" fill="#e11d48" stroke="#fb7185" stroke-width="2"/>
+    <text x="240" y="374" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">0</text>
+  </g>
+
+  <!-- Zone Badges -->
+  <rect x="360" y="415" width="160" height="26" rx="6" fill="#0c4a6e" fill-opacity="0.7" stroke="#0284c7" stroke-width="1"/>
+  <text x="440" y="432" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">Région Classe 1 (z &gt; 0)</text>
+
+  <rect x="55" y="335" width="150" height="26" rx="6" fill="#881337" fill-opacity="0.7" stroke="#e11d48" stroke-width="1"/>
+  <text x="130" y="352" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#fda4af" text-anchor="middle">Région Classe 0 (z &lt; 0)</text>
+
+  <!-- ================= RIGHT PANEL: EXPLANATIONS (360px) ================= -->
+  <!-- Card 1: Équation de la Droite -->
+  <g filter="url(#geomShadow)">
+    <rect x="560" y="120" width="350" height="76" rx="12" fill="#131d31" stroke="#1e3a5f" stroke-width="1.2"/>
+    <text x="580" y="142" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">1. Équation de la Frontière (z = 0)</text>
+    <rect x="580" y="152" width="310" height="30" rx="6" fill="#0b1220"/>
+    <text x="735" y="172" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">w₁ x₁ + w₂ x₂ + b = 0</text>
+  </g>
+
+  <!-- Card 2: Forme Cartésienne (Pente & Ordonnée) -->
+  <g filter="url(#geomShadow)">
+    <rect x="560" y="208" width="350" height="96" rx="12" fill="#131d31" stroke="#1e3a5f" stroke-width="1.2"/>
+    <text x="580" y="230" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">2. Forme Affine (y = m·x + p)</text>
+    <rect x="580" y="240" width="310" height="30" rx="6" fill="#0b1220"/>
+    <text x="735" y="260" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#c084fc" text-anchor="middle">x₂ = - (w₁ / w₂) x₁ - (b / w₂)</text>
+    <text x="580" y="288" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Pente = <tspan fill="#c084fc" font-weight="600">-w₁/w₂</tspan>   • Ordonnée à l'origine = <tspan fill="#fbbf24" font-weight="600">-b/w₂</tspan></text>
+  </g>
+
+  <!-- Card 3: Rôle du Vecteur Normal w -->
+  <g filter="url(#geomShadow)">
+    <rect x="560" y="316" width="350" height="76" rx="12" fill="#131d31" stroke="#1e3a5f" stroke-width="1.2"/>
+    <text x="580" y="338" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">3. Rôle du Vecteur Poids w</text>
+    <text x="580" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Le vecteur <tspan font-family="Consolas" font-weight="700" fill="#38bdf8">w = [w₁, w₂]</tspan> est orthogonal à la droite.</text>
+    <text x="580" y="378" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Il pointe directement vers la zone positive (<tspan fill="#38bdf8">Classe 1</tspan>).</text>
+  </g>
+
+  <!-- Card 4: Rôle du Biais b -->
+  <g filter="url(#geomShadow)">
+    <rect x="560" y="404" width="350" height="76" rx="12" fill="#131d31" stroke="#1e3a5f" stroke-width="1.2"/>
+    <text x="580" y="426" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">4. Rôle du Paramètre de Biais b</text>
+    <text x="580" y="448" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Le biais <tspan font-family="Consolas" font-weight="700" fill="#fbbf24">b</tspan> translate la droite dans le plan.</text>
+    <text x="580" y="466" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Sans biais (b = 0), la frontière passerait par (0,0) !</text>
+  </g>
+</svg>
