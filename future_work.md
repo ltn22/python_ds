@@ -10,13 +10,18 @@ sur des outils choisis arbitrairement.
 
 ## Fait
 
-- **Autocorrélation** (Partie 2, section 2.3) — alternative à la FFT pour
+- **Autocorrélation** (Section 08, section 2.3) — alternative à la FFT pour
   trouver le rythme d'un signal, sans domaine fréquentiel. Ajoutée après
   avoir vu que `trainer/sessions.py` l'utilise pour le tag automatique du
   frigo par périodicité. Les deux méthodes convergent sur le même résultat
   (~17 min pour le frigo fatigué), ce qui renforce le message pédagogique.
 
-- **CNN1D** (Partie 3, section 3.7) — PyTorch ajouté aux dépendances
+- **Arbres de Décision** (Section 09) — classification multi-appareils
+  (Cuit-vapeur, Sèche-linge, Recharge VE) par découpage orthogonal de l'espace
+  des caractéristiques, calcul de l'impureté de Gini, interprétabilité, matrice
+  de confusion et régularisation (surapprentissage vs élagage).
+
+- **CNN1D & Random Forest** (Section 10, section 3.7) — PyTorch ajouté aux dépendances
   (TensorFlow ne supporte pas Python 3.13, contrairement à `trainer/` qui
   tourne sur un venv dédié ; torch fonctionne directement ici). Objectif de
   départ : montrer que 36 exemples ne suffisent pas pour du deep learning.
@@ -33,9 +38,9 @@ sur des outils choisis arbitrairement.
   pourquoi de vraies données (foyers différents, usure, marques) seraient
   un test plus dur et plus honnête.
 
-## Recommandé en priorité : Partie 4 — CUSUM et fusion de sessions
+## Recommandé en priorité : Section 11 — CUSUM et fusion de sessions
 
-Motivation directe et concrète : dans la Partie 3 (section 3.1), le
+Motivation directe et concrète : dans la Section 10 (section 3.1), le
 détecteur de fronts `windowing.slice_on_edges` génère **16 fenêtres** pour
 un seul évènement de cuit-vapeur (une par bascule ON/OFF du thermostat),
 contre 2 pour le micro-ondes. C'est exactement le problème que
@@ -54,10 +59,10 @@ Deux techniques à introduire :
 - **Fusion de sessions** — regrouper les pulses consécutifs de même
   amplitude séparés de moins de `max_gap` en une seule session d'usage.
 
-Une Partie 4 qui reprend le bug déjà découvert par les étudiants en Partie 3
+Une Section 11 qui reprend le bug déjà découvert par les étudiants en Section 10
 et le corrige avec l'outil réel serait un excellent fil narratif.
 
-À intégrer dans cette même partie : le **lave-linge de la Partie 3 est trop
+À intégrer dans cette même partie : le **lave-linge de la Section 10 est trop
 régulier**. Son profil actuel (`profil_lave_linge` — chauffe/lavage/essorage,
 3 phases fixes) est le même à chaque instance, à la durée et au bruit près.
 Un vrai lave-linge a des **programmes différents** (éco 30°, coton 60°,
@@ -85,9 +90,9 @@ autres appareils qui sont chacun un profil quasi unique).
 
 ## Idée d'enchaînement
 
-1. **Partie 4** : CUSUM + fusion de sessions (corrige le bug de la Partie 3),
+1. **Section 11** : CUSUM + fusion de sessions (corrige le bug de la Section 10),
    + lave-linge multi-programmes (appareil irrégulier)
-2. **Partie 5** (éventuelle) : clustering non supervisé (HDBSCAN/UMAP) pour
+2. **Section 12** (éventuelle) : clustering non supervisé (HDBSCAN/UMAP) pour
    découvrir des appareils sans labels
-3. **Partie 6** (éventuelle) : NILMTK et les algorithmes académiques (Hart85,
+3. **Section 13** (éventuelle) : NILMTK et les algorithmes académiques (Hart85,
    CO, FHMM) en comparaison avec le pipeline « maison »
