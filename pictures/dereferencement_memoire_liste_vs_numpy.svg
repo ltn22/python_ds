@@ -1,0 +1,266 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardPyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b2e"/>
+      <stop offset="100%" stop-color="#13111f"/>
+    </linearGradient>
+    <linearGradient id="cardNpGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e2330"/>
+      <stop offset="100%" stop-color="#0b1724"/>
+    </linearGradient>
+
+    <!-- Node Gradients -->
+    <linearGradient id="redNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="cyanNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="greenNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="amberNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="purpleNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e"/>
+    </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1100" height="620" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="550" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Architecture Mémoire : Liste Python vs Tableau NumPy
+  </text>
+  <text x="550" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Pourquoi le déréférencement et l'éparpillement en RAM pénalisent les calculs face à un bloc contigu
+  </text>
+
+  <!-- ============================================================== -->
+  <!-- LEFT COLUMN: PYTHON LIST (POINTERS & DEREFERENCING) -->
+  <!-- ============================================================== -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <!-- Main Card Box -->
+    <rect width="490" height="495" rx="14" fill="url(#cardPyGrad)" stroke="#f43f5e" stroke-opacity="0.35" stroke-width="1.5"/>
+
+    <!-- Column Header -->
+    <rect x="0" y="0" width="490" height="50" rx="14" fill="#2d1522" fill-opacity="0.7"/>
+    <text x="25" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold" fill="#fda4af">
+      🐍 Liste Python standard : <tspan font-family="monospace">L = [12, 15, 22]</tspan>
+    </text>
+
+    <!-- Subtitle description -->
+    <text x="25" y="75" font-family="system-ui, sans-serif" font-size="12.5" fill="#e2e8f0">
+      Tableau de <tspan font-weight="bold" fill="#f43f5e">pointeurs / références</tspan> (adresses mémoires) :
+    </text>
+
+    <!-- Pointers Array (Contiguous pointers to scattered objects) -->
+    <g transform="translate(25, 90)">
+      <!-- Cell 0 -->
+      <rect x="0" y="0" width="135" height="48" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+      <text x="67" y="20" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Index [0]</text>
+      <text x="67" y="38" font-family="monospace" font-size="12" font-weight="bold" fill="#fca5a5" text-anchor="middle">ptr: 0x10a2f4</text>
+
+      <!-- Cell 1 -->
+      <rect x="150" y="0" width="135" height="48" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+      <text x="217" y="20" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Index [1]</text>
+      <text x="217" y="38" font-family="monospace" font-size="12" font-weight="bold" fill="#fca5a5" text-anchor="middle">ptr: 0x7f48b0</text>
+
+      <!-- Cell 2 -->
+      <rect x="300" y="0" width="135" height="48" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+      <text x="367" y="20" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Index [2]</text>
+      <text x="367" y="38" font-family="monospace" font-size="12" font-weight="bold" fill="#fca5a5" text-anchor="middle">ptr: 0x2c19e8</text>
+    </g>
+
+    <!-- Label Déréférencement (Saut en RAM) -->
+    <g transform="translate(25, 160)">
+      <rect x="0" y="0" width="440" height="26" rx="4" fill="#3b111f" stroke="#f43f5e" stroke-opacity="0.4"/>
+      <text x="220" y="18" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#fb7185" text-anchor="middle">
+        ⚠️ DÉRÉFÉRENCEMENT : Saut à une adresse arbitraire en RAM à chaque élément !
+      </text>
+    </g>
+
+    <!-- Scattered PyObjects in Heap RAM -->
+    <!-- Object 1 -->
+    <g transform="translate(25, 205)">
+      <path d="M 67 -20 C 67 0, 45 10, 45 25" fill="none" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowRed)"/>
+      <rect x="0" y="25" width="135" height="120" rx="8" fill="#1e293b" stroke="#e11d48" stroke-width="1.5"/>
+      <rect x="0" y="25" width="135" height="24" rx="8" fill="#371b29"/>
+      <text x="67" y="41" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#fda4af" text-anchor="middle">PyObject (28 octets)</text>
+
+      <text x="12" y="66" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_refcnt: 1</text>
+      <text x="12" y="84" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_type: &amp;int</text>
+      <text x="12" y="102" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_size: 1</text>
+      <rect x="8" y="112" width="119" height="26" rx="4" fill="#4c0519"/>
+      <text x="67" y="130" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#fecdd3" text-anchor="middle">Valeur : 12</text>
+      <text x="67" y="156" font-family="monospace" font-size="10" fill="#fca5a5" text-anchor="middle">@ 0x10a2f4</text>
+    </g>
+
+    <!-- Object 2 (Offset / scattered) -->
+    <g transform="translate(175, 230)">
+      <path d="M 67 -45 C 67 -10, 67 0, 67 15" fill="none" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowRed)"/>
+      <rect x="0" y="15" width="135" height="120" rx="8" fill="#1e293b" stroke="#e11d48" stroke-width="1.5"/>
+      <rect x="0" y="15" width="135" height="24" rx="8" fill="#371b29"/>
+      <text x="67" y="31" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#fda4af" text-anchor="middle">PyObject (28 octets)</text>
+
+      <text x="12" y="56" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_refcnt: 4</text>
+      <text x="12" y="74" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_type: &amp;int</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_size: 1</text>
+      <rect x="8" y="102" width="119" height="26" rx="4" fill="#4c0519"/>
+      <text x="67" y="120" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#fecdd3" text-anchor="middle">Valeur : 15</text>
+      <text x="67" y="146" font-family="monospace" font-size="10" fill="#fca5a5" text-anchor="middle">@ 0x7f48b0</text>
+    </g>
+
+    <!-- Object 3 (Offset / scattered) -->
+    <g transform="translate(325, 210)">
+      <path d="M 67 -25 C 67 0, 80 10, 80 20" fill="none" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowRed)"/>
+      <rect x="0" y="20" width="135" height="120" rx="8" fill="#1e293b" stroke="#e11d48" stroke-width="1.5"/>
+      <rect x="0" y="20" width="135" height="24" rx="8" fill="#371b29"/>
+      <text x="67" y="36" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#fda4af" text-anchor="middle">PyObject (28 octets)</text>
+
+      <text x="12" y="61" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_refcnt: 2</text>
+      <text x="12" y="79" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_type: &amp;int</text>
+      <text x="12" y="97" font-family="monospace" font-size="10.5" fill="#94a3b8">ob_size: 1</text>
+      <rect x="8" y="107" width="119" height="26" rx="4" fill="#4c0519"/>
+      <text x="67" y="125" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#fecdd3" text-anchor="middle">Valeur : 22</text>
+      <text x="67" y="151" font-family="monospace" font-size="10" fill="#fca5a5" text-anchor="middle">@ 0x2c19e8</text>
+    </g>
+
+    <!-- Hardware impact footer -->
+    <g transform="translate(25, 410)">
+      <rect x="0" y="0" width="440" height="70" rx="8" fill="#18121f" stroke="#e11d48" stroke-opacity="0.3"/>
+      <text x="18" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f87171">
+        ❌ Défauts de cache CPU permanents (Cache Miss) :
+      </text>
+      <text x="18" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Objets dispersés en RAM : le prefetcher CPU ne peut anticiper.
+      </text>
+      <text x="18" y="58" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Double accès mémoire (indirection) + déballage de chaque objet.
+      </text>
+    </g>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- RIGHT COLUMN: NUMPY ARRAY (CONTIGUOUS & NO DEREFERENCING) -->
+  <!-- ============================================================== -->
+  <g transform="translate(570, 95)" filter="url(#shadow)">
+    <!-- Main Card Box -->
+    <rect width="490" height="495" rx="14" fill="url(#cardNpGrad)" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5"/>
+
+    <!-- Column Header -->
+    <rect x="0" y="0" width="490" height="50" rx="14" fill="#0c3245" fill-opacity="0.7"/>
+    <text x="25" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold" fill="#67e8f9">
+      ⚡ Array NumPy : <tspan font-family="monospace">np.array([12, 15, 22])</tspan>
+    </text>
+
+    <!-- Subtitle description -->
+    <text x="25" y="75" font-family="system-ui, sans-serif" font-size="12.5" fill="#e2e8f0">
+      Un <tspan font-weight="bold" fill="#38bdf8">seul en-tête</tspan> pointant vers un <tspan font-weight="bold" fill="#10b981">bloc contigu</tspan> de mémoire brute :
+    </text>
+
+    <!-- NumPy Header Metadata -->
+    <g transform="translate(25, 90)">
+      <rect x="0" y="0" width="440" height="60" rx="8" fill="#132a3a" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#7dd3fc">
+        En-tête PyArrayObject (Métadonnées uniques) :
+      </text>
+      <text x="15" y="46" font-family="monospace" font-size="11" fill="#bae6fd">
+        shape: (3,)  |  dtype: int64 (8 octets)  |  data: 0x74a5330f00
+      </text>
+    </g>
+
+    <!-- Arrow down to buffer -->
+    <path d="M 245 152 L 245 185" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+
+    <!-- Label Contigu & Direct Access -->
+    <g transform="translate(25, 195)">
+      <rect x="0" y="0" width="440" height="26" rx="4" fill="#063228" stroke="#10b981" stroke-opacity="0.4"/>
+      <text x="220" y="18" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">
+        ✅ MÉMOIRE CONTIGUË : Zéro déréférencement d'élément !
+      </text>
+    </g>
+
+    <!-- Contiguous Memory Buffer (Values glued together) -->
+    <g transform="translate(25, 240)">
+      <!-- Outer Buffer Box -->
+      <rect x="0" y="0" width="440" height="110" rx="10" fill="#0f2938" stroke="#10b981" stroke-width="2"/>
+
+      <!-- Value 12 -->
+      <rect x="15" y="15" width="125" height="80" rx="6" fill="#047857"/>
+      <text x="77" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#d1fae5" text-anchor="middle">int64 [Index 0]</text>
+      <text x="77" y="70" font-family="system-ui, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">12</text>
+      <text x="77" y="88" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">8 octets bruts</text>
+
+      <!-- Value 15 -->
+      <rect x="155" y="15" width="125" height="80" rx="6" fill="#047857"/>
+      <text x="217" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#d1fae5" text-anchor="middle">int64 [Index 1]</text>
+      <text x="217" y="70" font-family="system-ui, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">15</text>
+      <text x="217" y="88" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">8 octets bruts</text>
+
+      <!-- Value 22 -->
+      <rect x="295" y="15" width="125" height="80" rx="6" fill="#047857"/>
+      <text x="357" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#d1fae5" text-anchor="middle">int64 [Index 2]</text>
+      <text x="357" y="70" font-family="system-ui, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">22</text>
+      <text x="357" y="88" font-family="monospace" font-size="10" fill="#a7f3d0" text-anchor="middle">8 octets bruts</text>
+
+      <!-- Contiguity indication -->
+      <text x="220" y="128" font-family="monospace" font-size="11" fill="#67e8f9" text-anchor="middle">
+        ◄─── Adresses consécutives en RAM : +8 octets par case ───►
+      </text>
+    </g>
+
+    <!-- Hardware impact footer -->
+    <g transform="translate(25, 410)">
+      <rect x="0" y="0" width="440" height="70" rx="8" fill="#0a1f29" stroke="#10b981" stroke-opacity="0.3"/>
+      <text x="18" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#34d399">
+        🚀 Caches L1/L2 saturés à 100% (Cache Hit permanent) :
+      </text>
+      <text x="18" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Le matériel aspire 64 octets d'un coup (8 nombres en avance).
+      </text>
+      <text x="18" y="58" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Prêt pour la vectorisation matérielle SIMD (AVX / ARM NEON) !
+      </text>
+    </g>
+  </g>
+</svg>
