@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 660" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGridGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#132338"/>
+      <stop offset="100%" stop-color="#0c1826"/>
+    </linearGradient>
+    <linearGradient id="cardRamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b30"/>
+      <stop offset="100%" stop-color="#11101e"/>
+    </linearGradient>
+
+    <!-- Cell Gradients for Matrix Rows -->
+    <linearGradient id="row0Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="row1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="row2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <!-- Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowRose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1100" height="660" fill="url(#bgGrad)"/>
+
+  <!-- Main Title & Subtitle -->
+  <text x="550" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Matrices 2D : La Double Vision Géométrique et Matérielle
+  </text>
+  <text x="550" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Exemple de Programme 2 : 12 mesures de température sur 3 jours (4 créneaux/jour) en grille 2D et en mémoire RAM
+  </text>
+
+  <!-- ============================================================== -->
+  <!-- LEFT PANEL: 2D GEOMETRIC VISION & AXIS NAVIGATION -->
+  <!-- ============================================================== -->
+  <g transform="translate(40, 90)" filter="url(#shadow)">
+    <rect width="490" height="535" rx="14" fill="url(#cardGridGrad)" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <rect x="0" y="0" width="490" height="50" rx="14" fill="#0b2a42" fill-opacity="0.8"/>
+    <text x="25" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8">
+      📐 1. Vision Géométrique 2D &amp; Navigation par Axes
+    </text>
+
+    <!-- Subtitle description -->
+    <text x="25" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">
+      Matrice <tspan font-family="monospace" font-weight="bold" fill="#38bdf8">mat_temp (3, 4)</tspan> : 3 jours (lignes) × 4 créneaux/jour (colonnes)
+    </text>
+
+    <!-- AXIS 1 Horizontal Arrow at Top -->
+    <g transform="translate(100, 92)">
+      <text x="140" y="-8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="middle">
+        axis = 1  ──►  Parcours des 4 créneaux (horizontal)
+      </text>
+      <line x1="10" y1="2" x2="270" y2="2" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+    </g>
+
+    <!-- AXIS 0 Vertical Arrow at Left -->
+    <g transform="translate(25, 140)">
+      <text x="0" y="0" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f43f5e" transform="rotate(-90 0,0) translate(-100, -15)">
+        axis = 0  ──►  Parcours des 3 jours (vertical)
+      </text>
+      <line x1="30" y1="10" x2="30" y2="160" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrowRose)"/>
+    </g>
+
+    <!-- 2D Matrix Grid -->
+    <g transform="translate(95, 125)">
+      <!-- Column Labels -->
+      <text x="35" y="-10" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Crén. 0 (6h)</text>
+      <text x="105" y="-10" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Crén. 1 (12h)</text>
+      <text x="175" y="-10" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Crén. 2 (18h)</text>
+      <text x="245" y="-10" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Crén. 3 (24h)</text>
+
+      <!-- Row 0 -->
+      <text x="-15" y="32" font-family="monospace" font-size="11" fill="#38bdf8" text-anchor="end">Jour 1</text>
+      <rect x="5" y="5" width="60" height="42" rx="6" fill="url(#row0Grad)"/>
+      <text x="35" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">18.2</text>
+
+      <rect x="75" y="5" width="60" height="42" rx="6" fill="url(#row0Grad)"/>
+      <text x="105" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">18.5</text>
+
+      <rect x="145" y="5" width="60" height="42" rx="6" fill="url(#row0Grad)"/>
+      <text x="175" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">19.1</text>
+
+      <rect x="215" y="5" width="60" height="42" rx="6" fill="url(#row0Grad)"/>
+      <text x="245" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">20.4</text>
+
+      <!-- Row 0 Reduction Result (axis=1) -->
+      <path d="M 285 26 L 310 26" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+      <rect x="315" y="8" width="70" height="36" rx="6" fill="#78350f" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="350" y="31" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#fef3c7" text-anchor="middle">J1: 19.05°</text>
+
+      <!-- Row 1 -->
+      <text x="-15" y="88" font-family="monospace" font-size="11" fill="#c084fc" text-anchor="end">Jour 2</text>
+      <rect x="5" y="60" width="60" height="42" rx="6" fill="url(#row1Grad)"/>
+      <text x="35" y="87" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">22.0</text>
+
+      <rect x="75" y="60" width="60" height="42" rx="6" fill="url(#row1Grad)"/>
+      <text x="105" y="87" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">23.5</text>
+
+      <rect x="145" y="60" width="60" height="42" rx="6" fill="url(#row1Grad)"/>
+      <text x="175" y="87" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">24.1</text>
+
+      <rect x="215" y="60" width="60" height="42" rx="6" fill="url(#row1Grad)"/>
+      <text x="245" y="87" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">23.8</text>
+
+      <!-- Row 1 Reduction Result (axis=1) -->
+      <path d="M 285 81 L 310 81" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+      <rect x="315" y="63" width="70" height="36" rx="6" fill="#78350f" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="350" y="86" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#fef3c7" text-anchor="middle">J2: 23.35°</text>
+
+      <!-- Row 2 -->
+      <text x="-15" y="143" font-family="monospace" font-size="11" fill="#34d399" text-anchor="end">Jour 3</text>
+      <rect x="5" y="115" width="60" height="42" rx="6" fill="url(#row2Grad)"/>
+      <text x="35" y="142" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">22.1</text>
+
+      <rect x="75" y="115" width="60" height="42" rx="6" fill="url(#row2Grad)"/>
+      <text x="105" y="142" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">20.5</text>
+
+      <rect x="145" y="115" width="60" height="42" rx="6" fill="url(#row2Grad)"/>
+      <text x="175" y="142" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">19.2</text>
+
+      <rect x="215" y="115" width="60" height="42" rx="6" fill="url(#row2Grad)"/>
+      <text x="245" y="142" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">18.6</text>
+
+      <!-- Row 2 Reduction Result (axis=1) -->
+      <path d="M 285 136 L 310 136" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+      <rect x="315" y="118" width="70" height="36" rx="6" fill="#78350f" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="350" y="141" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#fef3c7" text-anchor="middle">J3: 20.10°</text>
+
+      <!-- Column Reduction Arrows & Results (axis=0) -->
+      <!-- Col 0 -->
+      <path d="M 35 165 L 35 188" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRose)"/>
+      <rect x="5" y="195" width="60" height="34" rx="6" fill="#881337" stroke="#f43f5e" stroke-width="1.2"/>
+      <text x="35" y="217" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#ffe4e6" text-anchor="middle">20.77°</text>
+
+      <!-- Col 1 -->
+      <path d="M 105 165 L 105 188" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRose)"/>
+      <rect x="75" y="195" width="60" height="34" rx="6" fill="#881337" stroke="#f43f5e" stroke-width="1.2"/>
+      <text x="105" y="217" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#ffe4e6" text-anchor="middle">20.83°</text>
+
+      <!-- Col 2 -->
+      <path d="M 175 165 L 175 188" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRose)"/>
+      <rect x="145" y="195" width="60" height="34" rx="6" fill="#881337" stroke="#f43f5e" stroke-width="1.2"/>
+      <text x="175" y="217" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#ffe4e6" text-anchor="middle">20.80°</text>
+
+      <!-- Col 3 -->
+      <path d="M 245 165 L 245 188" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRose)"/>
+      <rect x="215" y="195" width="60" height="34" rx="6" fill="#881337" stroke="#f43f5e" stroke-width="1.2"/>
+      <text x="245" y="217" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="#ffe4e6" text-anchor="middle">20.93°</text>
+    </g>
+
+    <!-- Rule Callout Box -->
+    <g transform="translate(25, 400)">
+      <rect x="0" y="0" width="440" height="110" rx="8" fill="#081824" stroke="#0284c7" stroke-opacity="0.5"/>
+      <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
+        🧠 La Règle d'Or de l'Axe Écrasé (Réduit) :
+      </text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="11.5" fill="#f87171">
+        • <tspan font-weight="bold">axis = 0</tspan> : Écrase les 3 jours (vertical) ──► Moyenne par créneau (forme (4,))
+      </text>
+      <text x="15" y="68" font-family="system-ui, sans-serif" font-size="11.5" fill="#fbbf24">
+        • <tspan font-weight="bold">axis = 1</tspan> : Écrase les 4 créneaux (horizontal) ──► Moyenne par jour (forme (3,))
+      </text>
+      <text x="15" y="92" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" font-style="italic">
+        Exemple : Pour la température moyenne de chaque jour (J1, J2, J3), on choisit axis=1 !
+      </text>
+    </g>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- RIGHT PANEL: PHYSICAL RAM LAYOUT (ROW-MAJOR / C-CONTIGUOUS) -->
+  <!-- ============================================================== -->
+  <g transform="translate(570, 90)" filter="url(#shadow)">
+    <rect width="490" height="535" rx="14" fill="url(#cardRamGrad)" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <rect x="0" y="0" width="490" height="50" rx="14" fill="#2b1442" fill-opacity="0.8"/>
+    <text x="25" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#d8b4fe">
+      💾 2. La Réalité Matérielle en RAM (Ordre C / Row-Major)
+    </text>
+
+    <!-- Subtitle description -->
+    <text x="25" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">
+      En mémoire physique, <tspan font-weight="bold" fill="#f43f5e">la 2D n'existe pas</tspan> ! La RAM est un ruban 1D continu :
+    </text>
+
+    <!-- Linear RAM Buffer -->
+    <g transform="translate(25, 95)">
+      <!-- Outer Buffer Container -->
+      <rect x="0" y="0" width="440" height="150" rx="10" fill="#151224" stroke="#a855f7" stroke-width="1.5"/>
+
+      <!-- Row 0 Block (Blue) -->
+      <rect x="10" y="10" width="135" height="55" rx="6" fill="url(#row0Grad)"/>
+      <text x="77" y="28" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" fill="#e0f2fe" text-anchor="middle">Jour 1 (4 créneaux)</text>
+      <text x="77" y="50" font-family="monospace" font-size="11" fill="#ffffff" text-anchor="middle">[18.2, 18.5, 19.1, 20.4]</text>
+
+      <!-- Row 1 Block (Purple) -->
+      <rect x="152" y="10" width="135" height="55" rx="6" fill="url(#row1Grad)"/>
+      <text x="219" y="28" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" fill="#f3e8ff" text-anchor="middle">Jour 2 (4 créneaux)</text>
+      <text x="219" y="50" font-family="monospace" font-size="11" fill="#ffffff" text-anchor="middle">[22.0, 23.5, 24.1, 23.8]</text>
+
+      <!-- Row 2 Block (Green) -->
+      <rect x="294" y="10" width="135" height="55" rx="6" fill="url(#row2Grad)"/>
+      <text x="361" y="28" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" fill="#d1fae5" text-anchor="middle">Jour 3 (4 créneaux)</text>
+      <text x="361" y="50" font-family="monospace" font-size="11" fill="#ffffff" text-anchor="middle">[22.1, 20.5, 19.2, 18.6]</text>
+
+      <!-- Memory continuity annotation -->
+      <text x="220" y="90" font-family="monospace" font-size="11" fill="#c084fc" text-anchor="middle">
+        ◄── 12 mesures contiguës de 3 jours × 8 octets = 96 octets ──►
+      </text>
+
+      <!-- Strides calculation formula -->
+      <rect x="10" y="105" width="420" height="35" rx="6" fill="#201633"/>
+      <text x="220" y="127" font-family="monospace" font-size="11" fill="#e9d5ff" text-anchor="middle">
+        strides = (32, 8)  ──►  Saut de 32 octets (4 floats) pour changer de jour
+      </text>
+    </g>
+
+    <!-- Reshape Magic Explanation -->
+    <g transform="translate(25, 275)">
+      <rect x="0" y="0" width="440" height="110" rx="8" fill="#1b1229" stroke="#c084fc" stroke-opacity="0.4"/>
+      <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#d8b4fe">
+        ⚡ Pourquoi .reshape(3, 4) s'exécute en 0 milliseconde ?
+      </text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
+        • <tspan font-weight="bold">Zéro copie de données</tspan> : Les 12 nombres ne bougent absolument pas en RAM !
+      </text>
+      <text x="15" y="68" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
+        • `.reshape(3, 4)` ou `.reshape(3, -1)` modifie uniquement les métadonnées de l'en-tête
+      </text>
+      <text x="15" y="88" font-family="system-ui, sans-serif" font-size="11.5" fill="#34d399">
+        • C'est une simple <tspan font-weight="bold">Vue (View)</tspan> avec une nouvelle règle de calcul d'indexation.
+      </text>
+    </g>
+
+    <!-- Impact on Performance & Machine Learning -->
+    <g transform="translate(25, 405)">
+      <rect x="0" y="0" width="440" height="105" rx="8" fill="#161224" stroke="#a855f7" stroke-opacity="0.3"/>
+      <text x="15" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#e9d5ff">
+        🤖 Impact direct en Machine Learning (Scikit-Learn &amp; Deep Learning) :
+      </text>
+      <text x="15" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • La matrice de features <tspan font-family="monospace">X</tspan> exige la forme 2D <tspan font-family="monospace">(n_échantillons, n_features)</tspan>.
+      </text>
+      <text x="15" y="64" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Pour 1 feature seule, un vecteur 1D <tspan font-family="monospace">(N,)</tspan> doit devenir <tspan font-family="monospace">(N, 1)</tspan> avec <tspan font-family="monospace">[:, np.newaxis]</tspan>.
+      </text>
+      <text x="15" y="84" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Les parcours par ligne (C-Order) sont optimisés pour la mémoire cache du processeur.
+      </text>
+    </g>
+  </g>
+</svg>
