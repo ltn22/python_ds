@@ -1,5 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 730" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="100%" height="100%">
   <defs>
+    <style>
+      text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      .code-font {
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      }
+    </style>
+
     <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0e17"/>
@@ -37,25 +46,25 @@
     </marker>
   </defs>
 
-  <!-- Background -->
-  <rect width="1140" height="730" fill="url(#bgGrad)"/>
+  <!-- Background Canvas -->
+  <rect width="1200" height="760" fill="url(#bgGrad)"/>
 
   <!-- Main Header -->
-  <text x="570" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
+  <text x="600" y="36" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
     Lissage par Convolution 1D &amp; Fenêtre Glissante (np.convolve)
   </text>
-  <text x="570" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" fill="#94a3b8" text-anchor="middle">
+  <text x="600" y="60" font-size="13.5" fill="#94a3b8" text-anchor="middle">
     Comment une fenêtre mobile de pondération uniforme (np.ones(K)/K) filtre le bruit physique haute fréquence
   </text>
 
   <!-- ============================================================== -->
-  <!-- MAIN SCHEMATIC CONTAINER -->
+  <!-- MAIN SCHEMATIC CONTAINER (Width = 1140) -->
   <!-- ============================================================== -->
-  <g transform="translate(30, 80)" filter="url(#shadow)">
-    <rect width="1080" height="625" rx="14" fill="url(#cardGrad)" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.5"/>
+  <g transform="translate(30, 75)" filter="url(#shadow)">
+    <rect width="1140" height="655" rx="14" fill="url(#cardGrad)" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.5"/>
 
     <!-- Section Title -->
-    <text x="35" y="32" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="#38bdf8">
+    <text x="35" y="32" font-size="15" font-weight="bold" fill="#38bdf8">
       1. Le Signal Brut Bruité et le Glissement du Noyau (K = 5 points)
     </text>
 
@@ -63,112 +72,114 @@
     <!-- ROW 1: SIGNAL BRUT -->
     <!-- ========================================== -->
     <g transform="translate(35, 50)">
-      <!-- Label on the left with ample space -->
-      <rect x="0" y="10" width="115" height="42" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-      <text x="57" y="36" font-family="system-ui, monospace" font-size="12.5" font-weight="bold" fill="#94a3b8" text-anchor="middle">
+      <!-- Label on the left -->
+      <rect x="0" y="8" width="115" height="44" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="57" y="35" class="code-font" font-size="12.5" font-weight="bold" fill="#94a3b8" text-anchor="middle">
         signal_brut
       </text>
 
-      <!-- Cells: width=72, gap=14 -> step=86 -->
+      <!-- Cells: width=75, gap=15 -> step=90 -->
+      <!-- x base = 140 -->
       <!-- Item 0 (t=0) -->
-      <rect x="140" y="8" width="72" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="176" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">148 W</text>
-      <text x="176" y="45" font-family="monospace" font-size="9.5" fill="#64748b" text-anchor="middle">t = 0</text>
+      <rect x="140" y="8" width="75" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="177" y="29" class="code-font" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">148 W</text>
+      <text x="177" y="45" class="code-font" font-size="9.5" fill="#64748b" text-anchor="middle">t = 0</text>
 
       <!-- Item 1 (t=1) -->
-      <rect x="226" y="8" width="72" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="262" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">155 W</text>
-      <text x="262" y="45" font-family="monospace" font-size="9.5" fill="#64748b" text-anchor="middle">t = 1</text>
+      <rect x="230" y="8" width="75" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="267" y="29" class="code-font" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">155 W</text>
+      <text x="267" y="45" class="code-font" font-size="9.5" fill="#64748b" text-anchor="middle">t = 1</text>
 
       <!-- Item 2 (t=2, under window) -->
-      <rect x="312" y="8" width="72" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
-      <text x="348" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">144 W</text>
-      <text x="348" y="45" font-family="monospace" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 2</text>
+      <rect x="320" y="8" width="75" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="357" y="29" class="code-font" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">144 W</text>
+      <text x="357" y="45" class="code-font" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 2</text>
 
       <!-- Item 3 (t=3, under window) -->
-      <rect x="398" y="8" width="72" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
-      <text x="434" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">158 W</text>
-      <text x="434" y="45" font-family="monospace" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 3</text>
+      <rect x="410" y="8" width="75" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="447" y="29" class="code-font" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">158 W</text>
+      <text x="447" y="45" class="code-font" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 3</text>
 
       <!-- Item 4 (t=4, CENTER of window) -->
-      <rect x="484" y="8" width="72" height="46" rx="7" fill="url(#cellCenterGrad)" stroke="#f59e0b" stroke-width="2"/>
-      <text x="520" y="29" font-family="monospace" font-size="12.5" font-weight="bold" fill="#fbbf24" text-anchor="middle">146 W</text>
-      <text x="520" y="45" font-family="system-ui" font-size="9.5" font-weight="bold" fill="#f59e0b" text-anchor="middle">t = 4 (centre)</text>
+      <rect x="500" y="8" width="75" height="46" rx="7" fill="url(#cellCenterGrad)" stroke="#f59e0b" stroke-width="2"/>
+      <text x="537" y="29" class="code-font" font-size="12.5" font-weight="bold" fill="#fbbf24" text-anchor="middle">146 W</text>
+      <text x="537" y="45" font-size="9.5" font-weight="bold" fill="#f59e0b" text-anchor="middle">t = 4 (centre)</text>
 
       <!-- Item 5 (t=5, under window) -->
-      <rect x="570" y="8" width="72" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
-      <text x="606" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">153 W</text>
-      <text x="606" y="45" font-family="monospace" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 5</text>
+      <rect x="590" y="8" width="75" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="627" y="29" class="code-font" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">153 W</text>
+      <text x="627" y="45" class="code-font" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 5</text>
 
       <!-- Item 6 (t=6, under window) -->
-      <rect x="656" y="8" width="72" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
-      <text x="692" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">149 W</text>
-      <text x="692" y="45" font-family="monospace" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 6</text>
+      <rect x="680" y="8" width="75" height="46" rx="7" fill="url(#cellActiveGrad)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="717" y="29" class="code-font" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">149 W</text>
+      <text x="717" y="45" class="code-font" font-size="9.5" fill="#7dd3fc" text-anchor="middle">t = 6</text>
 
       <!-- Item 7 (t=7) -->
-      <rect x="742" y="8" width="72" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="778" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">162 W</text>
-      <text x="778" y="45" font-family="monospace" font-size="9.5" fill="#64748b" text-anchor="middle">t = 7</text>
+      <rect x="770" y="8" width="75" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="807" y="29" class="code-font" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">162 W</text>
+      <text x="807" y="45" class="code-font" font-size="9.5" fill="#64748b" text-anchor="middle">t = 7</text>
 
       <!-- Item 8 (t=8) -->
-      <rect x="828" y="8" width="72" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-      <text x="864" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">145 W</text>
-      <text x="864" y="45" font-family="monospace" font-size="9.5" fill="#64748b" text-anchor="middle">t = 8</text>
+      <rect x="860" y="8" width="75" height="46" rx="7" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="897" y="29" class="code-font" font-size="12" font-weight="bold" fill="#cbd5e1" text-anchor="middle">145 W</text>
+      <text x="897" y="45" class="code-font" font-size="9.5" fill="#64748b" text-anchor="middle">t = 8</text>
 
       <!-- Ellipsis -->
-      <text x="925" y="36" font-family="monospace" font-size="18" fill="#64748b">...</text>
+      <text x="965" y="36" class="code-font" font-size="18" fill="#64748b">...</text>
     </g>
 
     <!-- ========================================== -->
     <!-- SLIDING WINDOW (KERNEL OVERLAY) -->
     <!-- ========================================== -->
-    <g transform="translate(342, 125)">
-      <!-- Title above the window with clear vertical margin -->
-      <text x="211" y="-8" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#f59e0b" text-anchor="middle">
+    <!-- Window spans from Item 2 (x=355 in container coordinates = 35+320) -->
+    <g transform="translate(350, 125)">
+      <!-- Title above the window -->
+      <text x="222" y="-9" font-size="12.5" font-weight="bold" fill="#f59e0b" text-anchor="middle">
         fenetre = np.ones(5) / 5  ──►  [ 0.2,  0.2,  0.2,  0.2,  0.2 ]
       </text>
 
-      <!-- Window border box -->
-      <rect x="0" y="2" width="422" height="58" rx="8" fill="#78350f" fill-opacity="0.25" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,4"/>
+      <!-- Window border box: width = 445 -->
+      <rect x="0" y="1" width="445" height="58" rx="8" fill="#78350f" fill-opacity="0.25" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,4"/>
 
-      <!-- 5 sub-rectangles for weights -->
+      <!-- 5 sub-rectangles for weights: width=75, gap=15 -->
       <!-- Sub 0 -->
-      <rect x="5" y="7" width="72" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
-      <text x="41" y="28" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
-      <text x="41" y="44" font-family="system-ui" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
+      <rect x="5" y="6" width="75" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
+      <text x="42" y="28" class="code-font" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="42" y="44" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
 
       <!-- Sub 1 -->
-      <rect x="91" y="7" width="72" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
-      <text x="127" y="28" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
-      <text x="127" y="44" font-family="system-ui" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
+      <rect x="95" y="6" width="75" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
+      <text x="132" y="28" class="code-font" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="132" y="44" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
 
       <!-- Sub 2 (Center) -->
-      <rect x="177" y="7" width="72" height="48" rx="5" fill="#d97706" fill-opacity="0.85" stroke="#fef08a" stroke-width="1.5"/>
-      <text x="213" y="28" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">× 0.2</text>
-      <text x="213" y="44" font-family="system-ui" font-size="9" font-weight="bold" fill="#fef08a" text-anchor="middle">centre</text>
+      <rect x="185" y="6" width="75" height="48" rx="5" fill="#d97706" fill-opacity="0.85" stroke="#fef08a" stroke-width="1.5"/>
+      <text x="222" y="28" class="code-font" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">× 0.2</text>
+      <text x="222" y="44" font-size="9" font-weight="bold" fill="#fef08a" text-anchor="middle">centre</text>
 
       <!-- Sub 3 -->
-      <rect x="263" y="7" width="72" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
-      <text x="299" y="28" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
-      <text x="299" y="44" font-family="system-ui" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
+      <rect x="275" y="6" width="75" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
+      <text x="312" y="28" class="code-font" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="312" y="44" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
 
       <!-- Sub 4 -->
-      <rect x="345" y="7" width="72" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
-      <text x="381" y="28" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
-      <text x="381" y="44" font-family="system-ui" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
+      <rect x="365" y="6" width="75" height="48" rx="5" fill="#b45309" fill-opacity="0.5"/>
+      <text x="402" y="28" class="code-font" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="402" y="44" font-size="9" fill="#fde68a" text-anchor="middle">(1/5)</text>
 
       <!-- Glissement arrow to the right -->
-      <g transform="translate(440, 15)">
+      <g transform="translate(465, 14)">
         <line x1="0" y1="16" x2="65" y2="16" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
-        <text x="35" y="5" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#fbbf24" text-anchor="middle">Glissement</text>
-        <text x="35" y="32" font-family="system-ui, sans-serif" font-size="9.5" fill="#cbd5e1" text-anchor="middle">(pas de +1)</text>
+        <text x="35" y="5" font-size="11" font-weight="bold" fill="#fbbf24" text-anchor="middle">Glissement</text>
+        <text x="35" y="32" font-size="9.5" fill="#cbd5e1" text-anchor="middle">(pas de +1)</text>
       </g>
     </g>
 
     <!-- Downward convergence arrow -->
-    <g transform="translate(555, 195)">
-      <line x1="0" y1="0" x2="0" y2="24" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowEmerald)"/>
-      <text x="18" y="16" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34d399">
+    <g transform="translate(572, 195)">
+      <line x1="0" y1="0" x2="0" y2="22" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowEmerald)"/>
+      <text x="18" y="15" font-size="11" font-weight="bold" fill="#34d399">
         Produit scalaire (somme des 5 multiplications)
       </text>
     </g>
@@ -176,166 +187,183 @@
     <!-- ========================================== -->
     <!-- FORMULA BOX (Calcul à t=4) -->
     <!-- ========================================== -->
-    <g transform="translate(35, 230)">
-      <rect x="0" y="0" width="1010" height="74" rx="9" fill="#081824" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.2"/>
-      <text x="25" y="26" font-family="monospace" font-size="12.5" font-weight="bold" fill="#38bdf8">
+    <g transform="translate(35, 226)">
+      <rect x="0" y="0" width="1070" height="74" rx="9" fill="#081824" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.2"/>
+      <text x="25" y="26" class="code-font" font-size="12.5" font-weight="bold" fill="#38bdf8">
         valeur_lissee[4] = (144 × 0.2) + (158 × 0.2) + (146 × 0.2) + (153 × 0.2) + (149 × 0.2)
       </text>
-      <text x="25" y="48" font-family="system-ui, sans-serif" font-size="12.5" fill="#cbd5e1">
-        = (144 + 158 + 146 + 153 + 149) / 5 = <tspan font-family="monospace" font-weight="bold" fill="#34d399">750 / 5 = 150.0 W</tspan>
+      <text x="25" y="48" font-size="12.5" fill="#cbd5e1">
+        = (144 + 158 + 146 + 153 + 149) / 5 = <tspan class="code-font" font-weight="bold" fill="#34d399">750 / 5 = 150.0 W</tspan>
       </text>
-      <text x="25" y="66" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">
-        • Principe : Les fluctuations aléatoires de bruit (±8 W) s'annulent mutuellement, révélant la puissance réelle !
+      <text x="25" y="66" font-size="11" fill="#94a3b8">
+        • Principe physique : Les fluctuations aléatoires de bruit (±8 W) s'annulent mutuellement, révélant la puissance réelle !
       </text>
     </g>
 
     <!-- ========================================== -->
     <!-- ROW 2: SIGNAL LISSÉ EN SORTIE -->
     <!-- ========================================== -->
-    <g transform="translate(35, 320)">
+    <g transform="translate(35, 316)">
       <!-- Label on the left -->
-      <rect x="0" y="8" width="115" height="42" rx="6" fill="#082f49" stroke="#0284c7" stroke-width="1.2"/>
-      <text x="57" y="34" font-family="system-ui, monospace" font-size="12.5" font-weight="bold" fill="#38bdf8" text-anchor="middle">
+      <rect x="0" y="8" width="115" height="44" rx="6" fill="#082f49" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="57" y="35" class="code-font" font-size="12.5" font-weight="bold" fill="#38bdf8" text-anchor="middle">
         signal_lisse
       </text>
 
-      <!-- Cells -->
-      <rect x="140" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="176" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~151 W</text>
+      <!-- Cells: width=75, gap=15 -->
+      <rect x="140" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="177" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~151 W</text>
 
-      <rect x="226" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="262" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~150 W</text>
+      <rect x="230" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="267" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~150 W</text>
 
-      <rect x="312" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="348" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~149 W</text>
+      <rect x="320" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="357" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~149 W</text>
 
-      <rect x="398" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="434" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~151 W</text>
+      <rect x="410" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="447" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~151 W</text>
 
-      <!-- Target Center Result -->
-      <rect x="484" y="8" width="72" height="44" rx="7" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
-      <text x="520" y="27" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">150.0 W</text>
-      <text x="520" y="42" font-family="system-ui" font-size="9" fill="#e0f2fe" text-anchor="middle">lissé à t=4</text>
+      <!-- Target Center Result (Highlighted) -->
+      <rect x="500" y="8" width="75" height="44" rx="7" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+      <text x="537" y="27" class="code-font" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">150.0 W</text>
+      <text x="537" y="42" font-size="9" fill="#e0f2fe" text-anchor="middle">lissé à t=4</text>
 
-      <rect x="570" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="606" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~150 W</text>
+      <rect x="590" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="627" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~150 W</text>
 
-      <rect x="656" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="692" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~152 W</text>
+      <rect x="680" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="717" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~152 W</text>
 
-      <rect x="742" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="778" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~151 W</text>
+      <rect x="770" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="807" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~151 W</text>
 
-      <rect x="828" y="8" width="72" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
-      <text x="864" y="34" font-family="monospace" font-size="11.5" fill="#94a3b8" text-anchor="middle">~149 W</text>
+      <rect x="860" y="8" width="75" height="44" rx="7" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
+      <text x="897" y="34" class="code-font" font-size="11.5" fill="#94a3b8" text-anchor="middle">~149 W</text>
 
-      <text x="925" y="34" font-family="monospace" font-size="18" fill="#64748b">...</text>
+      <text x="965" y="34" class="code-font" font-size="18" fill="#64748b">...</text>
     </g>
 
     <!-- ========================================== -->
-    <!-- SECTION 2: LES 3 PILIERS TECHNIQUES (3 CARDS) -->
+    <!-- SECTION 2: LES 3 PILIERS TECHNIQUES (3 WIDE CARDS) -->
     <!-- ========================================== -->
-    <g transform="translate(35, 395)">
+    <!-- Total width = 1070. 3 cards: width=340 each. Gaps = 25. Margins = 0 -->
+    <!-- Card 1: x = 35 -->
+    <!-- Card 2: x = 400 -->
+    <!-- Card 3: x = 765 -->
+    <g transform="translate(35, 388)">
       <!-- CARD 1: np.ones et normalisation -->
       <g transform="translate(0, 0)">
-        <rect width="320" height="205" rx="10" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.5" stroke-width="1.2"/>
-        <!-- Header -->
-        <path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 34 L 0 34 Z" fill="#312e81" fill-opacity="0.6"/>
-        <text x="15" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#a5b4fc">
+        <rect width="340" height="240" rx="10" fill="#1e1b4b" fill-opacity="0.75" stroke="#6366f1" stroke-opacity="0.5" stroke-width="1.2"/>
+        <!-- Header banner -->
+        <path d="M 0 10 Q 0 0 10 0 L 330 0 Q 340 0 340 10 L 340 36 L 0 36 Z" fill="#312e81" fill-opacity="0.7"/>
+        <text x="16" y="24" font-size="13" font-weight="bold" fill="#a5b4fc">
           1. np.ones(K) et normalisation (/ K)
         </text>
 
-        <!-- Body text carefully wrapped within 290px -->
-        <text x="15" y="55" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • <tspan font-family="monospace" font-weight="bold" fill="#c7d2fe">np.ones(5)</tspan> crée un vecteur de 5 fois 1.0 :
+        <!-- Body text: max 35 chars per line for guaranteed zero overflow -->
+        <text x="16" y="58" font-size="11.5" fill="#cbd5e1">
+          • <tspan class="code-font" font-weight="bold" fill="#c7d2fe">np.ones(5)</tspan> crée un vecteur de
         </text>
-        <text x="25" y="73" font-family="monospace" font-size="11.5" fill="#e0e7ff">
-          array([ 1.,  1.,  1.,  1.,  1. ])
-        </text>
-
-        <text x="15" y="96" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • La division <tspan font-family="monospace" font-weight="bold" fill="#c7d2fe">/ 5</tspan> attribue le poids <tspan font-weight="bold">1/5 = 0.2</tspan>.
+        <text x="26" y="76" font-size="11.5" fill="#cbd5e1">
+          5 valeurs 1.0 : <tspan class="code-font" fill="#e0e7ff">[1., 1., 1., 1., 1.]</tspan>
         </text>
 
-        <text x="15" y="119" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • <tspan font-weight="bold" fill="#34d399">Somme des poids = 1.0</tspan> : l'énergie globale
+        <text x="16" y="102" font-size="11.5" fill="#cbd5e1">
+          • Diviser par 5 (<tspan class="code-font" font-weight="bold" fill="#c7d2fe">/ 5</tspan>) attribue à chaque
         </text>
-        <text x="25" y="137" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          du signal en Watts est conservée !
+        <text x="26" y="120" font-size="11.5" fill="#cbd5e1">
+          point le poids uniforme <tspan font-weight="bold" fill="#fef3c7">1/5 = 0.2</tspan>.
         </text>
 
-        <text x="15" y="165" font-family="system-ui, sans-serif" font-size="10.5" fill="#94a3b8" font-style="italic">
+        <text x="16" y="146" font-size="11.5" fill="#cbd5e1">
+          • <tspan font-weight="bold" fill="#34d399">Somme des poids = 1.0</tspan> : l'énergie
+        </text>
+        <text x="26" y="164" font-size="11.5" fill="#cbd5e1">
+          globale du signal est conservée !
+        </text>
+
+        <text x="16" y="196" font-size="10.5" fill="#94a3b8" font-style="italic">
           (Sans division, la puissance moyenne
         </text>
-        <text x="15" y="181" font-family="system-ui, sans-serif" font-size="10.5" fill="#94a3b8" font-style="italic">
+        <text x="16" y="213" font-size="10.5" fill="#94a3b8" font-style="italic">
           serait artificiellement multipliée par 5 !).
         </text>
       </g>
 
       <!-- CARD 2: Effet Passe-Bas -->
-      <g transform="translate(345, 0)">
-        <rect width="320" height="205" rx="10" fill="#064e3b" fill-opacity="0.45" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.2"/>
-        <!-- Header -->
-        <path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 34 L 0 34 Z" fill="#065f46" fill-opacity="0.6"/>
-        <text x="15" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#6ee7b7">
+      <g transform="translate(365, 0)">
+        <rect width="340" height="240" rx="10" fill="#064e3b" fill-opacity="0.5" stroke="#10b981" stroke-opacity="0.5" stroke-width="1.2"/>
+        <!-- Header banner -->
+        <path d="M 0 10 Q 0 0 10 0 L 330 0 Q 340 0 340 10 L 340 36 L 0 36 Z" fill="#065f46" fill-opacity="0.7"/>
+        <text x="16" y="24" font-size="13" font-weight="bold" fill="#6ee7b7">
           2. Effet Filtre Passe-Bas (Low-Pass)
         </text>
 
         <!-- Body text -->
-        <text x="15" y="55" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • Le bruit physique thermique oscille vite
+        <text x="16" y="58" font-size="11.5" fill="#cbd5e1">
+          • Le bruit thermique oscille très vite
         </text>
-        <text x="25" y="73" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          autour de 0 (fréquence élevée, ±5 W).
-        </text>
-
-        <text x="15" y="98" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • En calculant la moyenne locale des voisins,
-        </text>
-        <text x="25" y="116" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          les écarts (+ et -) s'annulent mutuellement.
+        <text x="26" y="76" font-size="11.5" fill="#cbd5e1">
+          autour de 0 (haute fréquence, ±5 W).
         </text>
 
-        <text x="15" y="145" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • <tspan font-weight="bold" fill="#34d399">Plus K est grand</tspan> (ex. K=21), plus le lissage
+        <text x="16" y="102" font-size="11.5" fill="#cbd5e1">
+          • En calculant la moyenne des 5 voisins,
         </text>
-        <text x="25" y="163" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          est fort, mais plus les transitions sont adoucies.
+        <text x="26" y="120" font-size="11.5" fill="#cbd5e1">
+          les écarts (+ et -) s'annulent.
+        </text>
+
+        <text x="16" y="146" font-size="11.5" fill="#cbd5e1">
+          • <tspan font-weight="bold" fill="#34d399">Plus K est grand</tspan> (ex. K = 21) :
+        </text>
+        <text x="26" y="166" font-size="11" fill="#a7f3d0">
+          - Le lissage est plus puissant
+        </text>
+        <text x="26" y="184" font-size="11" fill="#a7f3d0">
+          - Mais les fronts de montée sont adoucis
+        </text>
+        <text x="26" y="202" font-size="11" fill="#94a3b8" font-style="italic">
+          (compromis réactivité vs pureté).
         </text>
       </g>
 
       <!-- CARD 3: mode='same' -->
-      <g transform="translate(690, 0)">
-        <rect width="320" height="205" rx="10" fill="#4c1d95" fill-opacity="0.4" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.2"/>
-        <!-- Header -->
-        <path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 34 L 0 34 Z" fill="#581c87" fill-opacity="0.6"/>
-        <text x="15" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#d8b4fe">
+      <g transform="translate(730, 0)">
+        <rect width="340" height="240" rx="10" fill="#4c1d95" fill-opacity="0.45" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.2"/>
+        <!-- Header banner -->
+        <path d="M 0 10 Q 0 0 10 0 L 330 0 Q 340 0 340 10 L 340 36 L 0 36 Z" fill="#581c87" fill-opacity="0.7"/>
+        <text x="16" y="24" font-size="13" font-weight="bold" fill="#d8b4fe">
           3. Le paramètre mode='same'
         </text>
 
         <!-- Body text -->
-        <text x="15" y="55" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • <tspan font-family="monospace" fill="#e9d5ff">mode='full'</tspan> : taille N + K - 1 (trop long).
+        <text x="16" y="58" font-size="11.5" fill="#cbd5e1">
+          • <tspan class="code-font" fill="#e9d5ff">mode='full'</tspan> : taille N + K - 1
         </text>
-        <text x="15" y="75" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • <tspan font-family="monospace" fill="#e9d5ff">mode='valid'</tspan> : taille N - K + 1 (bords rognés).
-        </text>
-
-        <text x="15" y="105" font-family="system-ui, sans-serif" font-size="11.5" fill="#cbd5e1">
-          • <tspan font-family="monospace" font-weight="bold" fill="#fef08a">mode='same'</tspan> : conserve <tspan font-weight="bold" fill="#38bdf8">exactement N points</tspan> !
-        </text>
-        <text x="25" y="125" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
-          (taille identique au signal brut de 1000 pts).
+        <text x="26" y="76" font-size="11" fill="#94a3b8">
+          (signal étendu aux bords, trop long).
         </text>
 
-        <text x="15" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
-          • Permet de tracer directement :
+        <text x="16" y="100" font-size="11.5" fill="#cbd5e1">
+          • <tspan class="code-font" fill="#e9d5ff">mode='valid'</tspan> : taille N - K + 1
         </text>
-        <text x="25" y="173" font-family="monospace" font-size="11" fill="#38bdf8">
+        <text x="26" y="118" font-size="11" fill="#94a3b8">
+          (sans débordement, bords tronqués).
+        </text>
+
+        <text x="16" y="144" font-size="11.5" fill="#cbd5e1">
+          • <tspan class="code-font" font-weight="bold" fill="#fef08a">mode='same'</tspan> : <tspan font-weight="bold" fill="#38bdf8">exactement N points</tspan> !
+        </text>
+        <text x="26" y="164" font-size="11" fill="#cbd5e1">
+          Taille identique au signal brut (1000 pts).
+        </text>
+
+        <text x="16" y="194" font-size="11" fill="#cbd5e1">
+          • Superposition directe dans Matplotlib :
+        </text>
+        <text x="26" y="213" class="code-font" font-size="11" font-weight="bold" fill="#38bdf8">
           plt.plot(t, signal_lisse)
-        </text>
-        <text x="25" y="190" font-family="system-ui, sans-serif" font-size="10.5" fill="#94a3b8" font-style="italic">
-          sans aucun décalage temporel !
         </text>
       </g>
     </g>
