@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#132338"/>
+      <stop offset="100%" stop-color="#0c1826"/>
+    </linearGradient>
+
+    <linearGradient id="kernelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="smoothGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="680" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="550" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Lissage par Convolution 1D &amp; Fenêtre Glissante (np.convolve)
+  </text>
+  <text x="550" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Comment une fenêtre mobile de pondération uniforme (np.ones(K)/K) filtre le bruit haute fréquence
+  </text>
+
+  <!-- ============================================================== -->
+  <!-- MAIN SCHEMATIC CARD -->
+  <!-- ============================================================== -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="1020" height="565" rx="14" fill="url(#cardGrad)" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.5"/>
+
+    <!-- ========================================== -->
+    <!-- SECTION A: Signal Brut Bruité & Fenêtre -->
+    <!-- ========================================== -->
+    <text x="40" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="#38bdf8">
+      1. Le Signal Brut Bruité et la Fenêtre Glissante (Noyau de 5 points)
+    </text>
+
+    <!-- Signal Array Elements (Row of cells) -->
+    <g transform="translate(60, 60)">
+      <!-- Label -->
+      <text x="-20" y="32" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#94a3b8" text-anchor="end">
+        signal_brut :
+      </text>
+
+      <!-- Cells 0 to 10 -->
+      <!-- Item 0 -->
+      <rect x="0" y="0" width="75" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="37" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#cbd5e1" text-anchor="middle">148 W</text>
+      <text x="37" y="42" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">t = 0</text>
+
+      <!-- Item 1 -->
+      <rect x="85" y="0" width="75" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="122" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#cbd5e1" text-anchor="middle">155 W</text>
+      <text x="122" y="42" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">t = 1</text>
+
+      <!-- Item 2 (Under window 0) -->
+      <rect x="170" y="0" width="75" height="50" rx="8" fill="#1e3a5f" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="207" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">144 W</text>
+      <text x="207" y="42" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle">t = 2</text>
+
+      <!-- Item 3 (Under window 1) -->
+      <rect x="255" y="0" width="75" height="50" rx="8" fill="#1e3a5f" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="292" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">158 W</text>
+      <text x="292" y="42" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle">t = 3</text>
+
+      <!-- Item 4 (Center of window - t=4) -->
+      <rect x="340" y="0" width="75" height="50" rx="8" fill="#2d2b55" stroke="#f59e0b" stroke-width="2"/>
+      <text x="377" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#fbbf24" text-anchor="middle">146 W</text>
+      <text x="377" y="42" font-family="monospace" font-size="10" font-weight="bold" fill="#f59e0b" text-anchor="middle">t = 4 (centre)</text>
+
+      <!-- Item 5 (Under window 3) -->
+      <rect x="425" y="0" width="75" height="50" rx="8" fill="#1e3a5f" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="462" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">153 W</text>
+      <text x="462" y="42" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle">t = 5</text>
+
+      <!-- Item 6 (Under window 4) -->
+      <rect x="510" y="0" width="75" height="50" rx="8" fill="#1e3a5f" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="547" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">149 W</text>
+      <text x="547" y="42" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle">t = 6</text>
+
+      <!-- Item 7 -->
+      <rect x="595" y="0" width="75" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="632" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#cbd5e1" text-anchor="middle">162 W</text>
+      <text x="632" y="42" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">t = 7</text>
+
+      <!-- Item 8 -->
+      <rect x="680" y="0" width="75" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="717" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#cbd5e1" text-anchor="middle">145 W</text>
+      <text x="717" y="42" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">t = 8</text>
+
+      <!-- Ellipsis -->
+      <text x="785" y="32" font-family="monospace" font-size="18" fill="#64748b">...</text>
+    </g>
+
+    <!-- Sliding Window (The Kernel overlay) -->
+    <!-- Positioned precisely over items 2 to 6 (width = 5*85 - 10 = 415) -->
+    <g transform="translate(230, 130)">
+      <!-- Window highlight outline -->
+      <rect x="0" y="0" width="415" height="70" rx="10" fill="#78350f" fill-opacity="0.3" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4"/>
+
+      <!-- Window Title -->
+      <text x="207" y="-8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="middle">
+        fenetre = np.ones(5) / 5  ──►  [ 0.2,  0.2,  0.2,  0.2,  0.2 ]
+      </text>
+
+      <!-- Sub-blocks for each coefficient -->
+      <rect x="5" y="8" width="75" height="54" rx="6" fill="#b45309" fill-opacity="0.5"/>
+      <text x="42" y="30" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="42" y="48" font-family="system-ui" font-size="9.5" fill="#fde68a" text-anchor="middle">(1/5)</text>
+
+      <rect x="88" y="8" width="75" height="54" rx="6" fill="#b45309" fill-opacity="0.5"/>
+      <text x="125" y="30" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="125" y="48" font-family="system-ui" font-size="9.5" fill="#fde68a" text-anchor="middle">(1/5)</text>
+
+      <rect x="170" y="8" width="75" height="54" rx="6" fill="#d97706" fill-opacity="0.8" stroke="#fef08a" stroke-width="1.5"/>
+      <text x="207" y="30" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">× 0.2</text>
+      <text x="207" y="48" font-family="system-ui" font-size="9.5" font-weight="bold" fill="#fef08a" text-anchor="middle">centre</text>
+
+      <rect x="252" y="8" width="75" height="54" rx="6" fill="#b45309" fill-opacity="0.5"/>
+      <text x="289" y="30" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="289" y="48" font-family="system-ui" font-size="9.5" fill="#fde68a" text-anchor="middle">(1/5)</text>
+
+      <rect x="335" y="8" width="75" height="54" rx="6" fill="#b45309" fill-opacity="0.5"/>
+      <text x="372" y="30" font-family="monospace" font-size="12" font-weight="bold" fill="#fef3c7" text-anchor="middle">× 0.2</text>
+      <text x="372" y="48" font-family="system-ui" font-size="9.5" fill="#fde68a" text-anchor="middle">(1/5)</text>
+
+      <!-- Sliding arrow -->
+      <line x1="435" y1="35" x2="520" y2="35" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+      <text x="477" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#fbbf24" text-anchor="middle">Glissement</text>
+      <text x="477" y="52" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">(pas de +1)</text>
+    </g>
+
+    <!-- Downward convergence arrow -->
+    <path d="M 437 210 L 437 245" stroke="#34d399" stroke-width="3" marker-end="url(#arrowEmerald)"/>
+    <text x="460" y="232" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34d399">
+      Somme des 5 produits (Produit Scalaire)
+    </text>
+
+    <!-- ========================================== -->
+    <!-- SECTION B: Formule mathématique détaillée -->
+    <!-- ========================================== -->
+    <g transform="translate(40, 255)">
+      <rect x="0" y="0" width="940" height="75" rx="10" fill="#081824" stroke="#0284c7" stroke-opacity="0.4"/>
+      
+      <text x="25" y="28" font-family="monospace" font-size="13" font-weight="bold" fill="#38bdf8">
+        valeur_lissee[4] = (144 × 0.2) + (158 × 0.2) + (146 × 0.2) + (153 × 0.2) + (149 × 0.2)
+      </text>
+      <text x="25" y="54" font-family="system-ui, sans-serif" font-size="13" fill="#cbd5e1">
+        = (144 + 158 + 146 + 153 + 149) / 5 = <tspan font-family="monospace" font-weight="bold" fill="#34d399">750 / 5 = 150.0 W</tspan>  
+        <tspan fill="#94a3b8" font-size="12">◄── Le bruit aléatoire (±8 W) s'annule, la valeur moyenne réelle (150 W) émerge !</tspan>
+      </text>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- SECTION C: Signal Lissé en Sortie -->
+    <!-- ========================================== -->
+    <g transform="translate(60, 350)">
+      <text x="-20" y="32" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="end">
+        signal_lisse :
+      </text>
+
+      <!-- Output cells -->
+      <rect x="0" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="37" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~151 W</text>
+
+      <rect x="85" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="122" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~150 W</text>
+
+      <rect x="170" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="207" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~149 W</text>
+
+      <rect x="255" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="292" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~151 W</text>
+
+      <!-- Center Result Cell Highlighted -->
+      <rect x="340" y="0" width="75" height="48" rx="8" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+      <text x="377" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">150.0 W</text>
+      <text x="377" y="40" font-family="system-ui" font-size="9.5" fill="#e0f2fe" text-anchor="middle">lissé à t=4</text>
+
+      <rect x="425" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="462" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~150 W</text>
+
+      <rect x="510" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="547" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~152 W</text>
+
+      <rect x="595" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="632" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~151 W</text>
+
+      <rect x="680" y="0" width="75" height="48" rx="8" fill="#0c4a6e" fill-opacity="0.4" stroke="#0284c7" stroke-width="1"/>
+      <text x="717" y="28" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">~149 W</text>
+
+      <text x="785" y="28" font-family="monospace" font-size="18" fill="#64748b">...</text>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- SECTION D: Les 3 piliers techniques (Cards) -->
+    <!-- ========================================== -->
+    <g transform="translate(40, 420)">
+      <!-- Card 1 : np.ones -->
+      <rect x="0" y="0" width="295" height="120" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1.2"/>
+      <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#a5b4fc">
+        1. np.ones(K) et normalisation (/ K)
+      </text>
+      <text x="15" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • <tspan font-family="monospace" fill="#c7d2fe">np.ones(21)</tspan> crée un vecteur de 21 fois le nombre <tspan font-weight="bold">1.0</tspan>.
+      </text>
+      <text x="15" y="66" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • La division <tspan font-family="monospace" fill="#c7d2fe">/ 21</tspan> attribue à chaque point le poids <tspan font-weight="bold">1/21</tspan>.
+      </text>
+      <text x="15" y="86" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • La somme des poids vaut <tspan font-weight="bold" fill="#34d399">1.0</tspan> : l'énergie globale du signal est conservée !
+      </text>
+      <text x="15" y="106" font-family="system-ui, sans-serif" font-size="10.5" fill="#94a3b8" font-style="italic">
+        (Sans le / 21, le signal serait amplifié de ×21).
+      </text>
+
+      <!-- Card 2 : Effet filtre passe-bas -->
+      <rect x="315" y="0" width="295" height="120" rx="10" fill="#064e3b" fill-opacity="0.5" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.2"/>
+      <text x="330" y="24" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#6ee7b7">
+        2. Effet Filtre Passe-Bas (Low-Pass)
+      </text>
+      <text x="330" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • Le bruit thermique oscille vite autour de 0 (fréquence élevée).
+      </text>
+      <text x="330" y="66" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • En moyennant 21 secondes consécutives, les fluctuations (+ et -) s'annulent.
+      </text>
+      <text x="330" y="86" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • <tspan font-weight="bold" fill="#34d399">Plus K est grand</tspan>, plus le signal est lisse, mais plus les fronts de montée sont arrondis.
+      </text>
+
+      <!-- Card 3 : mode='same' -->
+      <rect x="630" y="0" width="310" height="120" rx="10" fill="#4c1d95" fill-opacity="0.4" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1.2"/>
+      <text x="645" y="24" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#d8b4fe">
+        3. Le paramètre mode='same'
+      </text>
+      <text x="645" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • <tspan font-family="monospace" fill="#e9d5ff">mode='full'</tspan> : taille N + K - 1 (trop long).
+      </text>
+      <text x="645" y="66" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • <tspan font-family="monospace" fill="#e9d5ff">mode='valid'</tspan> : taille N - K + 1 (bords rognés).
+      </text>
+      <text x="645" y="86" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+        • <tspan font-family="monospace" font-weight="bold" fill="#fef08a">mode='same'</tspan> : conserve <tspan font-weight="bold" fill="#38bdf8">exactement N points</tspan> !
+      </text>
+      <text x="645" y="106" font-family="system-ui, sans-serif" font-size="10.5" fill="#cbd5e1">
+        Permet de tracer <tspan font-family="monospace">plt.plot(t, signal_lisse)</tspan> sans décalage.
+      </text>
+    </g>
+  </g>
+</svg>
