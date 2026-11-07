@@ -17,124 +17,116 @@
       <stop offset="100%" stop-color="#0a1826"/>
     </linearGradient>
 
-    <!-- Vector Reg Gradient -->
-    <linearGradient id="vecRegGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0284c7"/>
-      <stop offset="50%" stop-color="#0369a1"/>
-      <stop offset="100%" stop-color="#075985"/>
-    </linearGradient>
-    <linearGradient id="vecResGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#059669"/>
-      <stop offset="50%" stop-color="#047857"/>
-      <stop offset="100%" stop-color="#065f46"/>
-    </linearGradient>
-
     <!-- Filters -->
     <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
       <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
     </filter>
-
-    <!-- Markers -->
-    <marker id="arrowOrange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f97316"/>
-    </marker>
-    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
-    </marker>
-    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
-    </marker>
   </defs>
 
   <!-- Background Canvas -->
   <rect width="1100" height="640" fill="url(#bgGrad)"/>
 
   <!-- Title & Subtitle -->
-  <text x="550" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
+  <text x="550" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">
     Qu'est-ce que le SIMD ? Calcul Scalaire vs Calcul Vectoriel
   </text>
-  <text x="550" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+  <text x="550" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" fill="#94a3b8" text-anchor="middle">
     <tspan font-weight="bold" fill="#38bdf8">SIMD</tspan> = <tspan font-style="italic">Single Instruction, Multiple Data</tspan> — Comment le CPU traite 4 à 8 nombres simultanément
   </text>
 
   <!-- ============================================================== -->
   <!-- LEFT COLUMN: SCALAR / SISD (PYTHON PURE / BOUCLE FOR) -->
   <!-- ============================================================== -->
-  <g transform="translate(40, 95)" filter="url(#shadow)">
+  <g transform="translate(40, 88)" filter="url(#shadow)">
     <!-- Main Card Box -->
-    <rect width="490" height="515" rx="14" fill="url(#cardSisdGrad)" stroke="#f97316" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect width="490" height="525" rx="14" fill="url(#cardSisdGrad)" stroke="#f97316" stroke-opacity="0.35" stroke-width="1.5"/>
 
     <!-- Column Header -->
-    <rect x="0" y="0" width="490" height="50" rx="14" fill="#381b14" fill-opacity="0.7"/>
-    <text x="25" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold" fill="#fdba74">
-      🐢 Calcul Scalaire (SISD) : Boucle Python
+    <rect x="0" y="0" width="490" height="48" rx="14" fill="#381b14" fill-opacity="0.7"/>
+    <rect x="18" y="12" width="24" height="24" rx="6" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+    <text x="30" y="29" font-family="monospace" font-size="13" font-weight="bold" fill="#fdba74" text-anchor="middle">1x</text>
+    <text x="52" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="15.5" font-weight="bold" fill="#fdba74">
+      Calcul Scalaire (SISD) : Boucle Python
     </text>
 
     <!-- Subtitle description -->
-    <text x="25" y="75" font-family="system-ui, sans-serif" font-size="12.5" fill="#e2e8f0">
+    <text x="25" y="72" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">
       <tspan font-weight="bold" fill="#f97316">1 instruction par cycle</tspan> pour <tspan font-weight="bold">1 seule paire</tspan> de nombres à la fois :
     </text>
 
     <!-- 4 Sequential Clock Cycles -->
-    <g transform="translate(25, 95)">
+    <g transform="translate(25, 88)">
       <!-- Cycle 1 -->
-      <g transform="translate(0, 0)">
-        <rect x="0" y="0" width="440" height="48" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
-        <rect x="8" y="8" width="85" height="32" rx="4" fill="#7c2d12"/>
-        <text x="50" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 1</text>
-        <text x="110" y="29" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 1 :</text>
-        <text x="200" y="29" font-family="monospace" font-size="13" font-weight="bold" fill="#fdba74">ADD a[0], b[0] ──► c[0]</text>
+      <g transform="translate(0, 8)">
+        <rect x="0" y="0" width="440" height="44" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
+        <rect x="6" y="6" width="85" height="32" rx="4" fill="#7c2d12"/>
+        <text x="48" y="27" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 1</text>
+        <text x="106" y="27" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 1 :</text>
+        <text x="198" y="27" font-family="monospace" font-size="12.5" font-weight="bold" fill="#fdba74">ADD a[0], b[0] ──► c[0]</text>
       </g>
 
       <!-- Cycle 2 -->
-      <g transform="translate(0, 58)">
-        <rect x="0" y="0" width="440" height="48" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
-        <rect x="8" y="8" width="85" height="32" rx="4" fill="#7c2d12"/>
-        <text x="50" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 2</text>
-        <text x="110" y="29" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 2 :</text>
-        <text x="200" y="29" font-family="monospace" font-size="13" font-weight="bold" fill="#fdba74">ADD a[1], b[1] ──► c[1]</text>
+      <g transform="translate(0, 64)">
+        <rect x="0" y="0" width="440" height="44" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
+        <rect x="6" y="6" width="85" height="32" rx="4" fill="#7c2d12"/>
+        <text x="48" y="27" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 2</text>
+        <text x="106" y="27" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 2 :</text>
+        <text x="198" y="27" font-family="monospace" font-size="12.5" font-weight="bold" fill="#fdba74">ADD a[1], b[1] ──► c[1]</text>
       </g>
 
       <!-- Cycle 3 -->
-      <g transform="translate(0, 116)">
-        <rect x="0" y="0" width="440" height="48" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
-        <rect x="8" y="8" width="85" height="32" rx="4" fill="#7c2d12"/>
-        <text x="50" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 3</text>
-        <text x="110" y="29" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 3 :</text>
-        <text x="200" y="29" font-family="monospace" font-size="13" font-weight="bold" fill="#fdba74">ADD a[2], b[2] ──► c[2]</text>
+      <g transform="translate(0, 120)">
+        <rect x="0" y="0" width="440" height="44" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
+        <rect x="6" y="6" width="85" height="32" rx="4" fill="#7c2d12"/>
+        <text x="48" y="27" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 3</text>
+        <text x="106" y="27" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 3 :</text>
+        <text x="198" y="27" font-family="monospace" font-size="12.5" font-weight="bold" fill="#fdba74">ADD a[2], b[2] ──► c[2]</text>
       </g>
 
       <!-- Cycle 4 -->
-      <g transform="translate(0, 174)">
-        <rect x="0" y="0" width="440" height="48" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
-        <rect x="8" y="8" width="85" height="32" rx="4" fill="#7c2d12"/>
-        <text x="50" y="29" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 4</text>
-        <text x="110" y="29" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 4 :</text>
-        <text x="200" y="29" font-family="monospace" font-size="13" font-weight="bold" fill="#fdba74">ADD a[3], b[3] ──► c[3]</text>
+      <g transform="translate(0, 176)">
+        <rect x="0" y="0" width="440" height="44" rx="6" fill="#1e293b" stroke="#f97316" stroke-opacity="0.5"/>
+        <rect x="6" y="6" width="85" height="32" rx="4" fill="#7c2d12"/>
+        <text x="48" y="27" font-family="monospace" font-size="12" font-weight="bold" fill="#ffedd5" text-anchor="middle">Cycle 4</text>
+        <text x="106" y="27" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Instruction 4 :</text>
+        <text x="198" y="27" font-family="monospace" font-size="12.5" font-weight="bold" fill="#fdba74">ADD a[3], b[3] ──► c[3]</text>
+      </g>
+
+      <!-- Sequential Flow Indicator -->
+      <g transform="translate(0, 230)">
+        <text x="220" y="16" font-family="system-ui, sans-serif" font-size="11.5" font-style="italic" fill="#f97316" text-anchor="middle">
+          ▼ Exécution séquentielle : 1 addition après l'autre
+        </text>
       </g>
     </g>
 
     <!-- Execution timeline summary -->
-    <g transform="translate(25, 335)">
+    <g transform="translate(25, 360)">
       <rect x="0" y="0" width="440" height="60" rx="8" fill="#19131d" stroke="#f97316" stroke-opacity="0.3"/>
-      <text x="18" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#fb923c">
-        ⏳ Bilan Temporel : 4 cycles d'horloge consécutifs
+      <!-- Vector Clock Icon -->
+      <circle cx="26" cy="22" r="10" fill="#7c2d12" stroke="#f97316" stroke-width="1.2"/>
+      <path d="M 26 17 L 26 22 L 29 24" stroke="#fdba74" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="44" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#fb923c">
+        Bilan Temporel : 4 cycles d'horloge consécutifs
       </text>
-      <text x="18" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+      <text x="18" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
         • L'ALU classique du processeur ne calcule qu'une addition par cycle.
       </text>
     </g>
 
     <!-- Hardware impact footer -->
-    <g transform="translate(25, 415)">
+    <g transform="translate(25, 435)">
       <rect x="0" y="0" width="440" height="75" rx="8" fill="#181119" stroke="#ef4444" stroke-opacity="0.3"/>
-      <text x="18" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f87171">
-        ❌ Pourquoi c'est très lent en Data Science :
+      <!-- Vector Alert Icon -->
+      <polygon points="26,14 17,29 35,29" fill="#991b1b" stroke="#f87171" stroke-width="1.2"/>
+      <text x="26" y="27" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+      <text x="44" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#f87171">
+        Pourquoi c'est très lent en Data Science :
       </text>
-      <text x="18" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+      <text x="18" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
         • Pour 1 million de mesures : 1 000 000 d'itérations de boucle for.
       </text>
-      <text x="18" y="58" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+      <text x="18" y="61" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
         • Plus le surcoût de l'évaluation dynamique de type à chaque tour.
       </text>
     </g>
@@ -143,111 +135,123 @@
   <!-- ============================================================== -->
   <!-- RIGHT COLUMN: VECTORIAL / SIMD (NUMPY) -->
   <!-- ============================================================== -->
-  <g transform="translate(570, 95)" filter="url(#shadow)">
+  <g transform="translate(570, 88)" filter="url(#shadow)">
     <!-- Main Card Box -->
-    <rect width="490" height="515" rx="14" fill="url(#cardSimdGrad)" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5"/>
+    <rect width="490" height="525" rx="14" fill="url(#cardSimdGrad)" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5"/>
 
     <!-- Column Header -->
-    <rect x="0" y="0" width="490" height="50" rx="14" fill="#0c3245" fill-opacity="0.7"/>
-    <text x="25" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold" fill="#67e8f9">
-      ⚡ Calcul Vectoriel (SIMD) : Array NumPy
+    <rect x="0" y="0" width="490" height="48" rx="14" fill="#0c3245" fill-opacity="0.7"/>
+    <!-- Vector Lightning Icon -->
+    <rect x="18" y="12" width="24" height="24" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1"/>
+    <path d="M 31 16 L 26 23 L 30 23 L 28 32 L 35 23 L 31 23 Z" fill="#facc15"/>
+    <text x="52" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="15.5" font-weight="bold" fill="#67e8f9">
+      Calcul Vectoriel (SIMD) : Array NumPy
     </text>
 
     <!-- Subtitle description -->
-    <text x="25" y="75" font-family="system-ui, sans-serif" font-size="12.5" fill="#e2e8f0">
+    <text x="25" y="72" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">
       <tspan font-weight="bold" fill="#38bdf8">1 seule instruction en 1 cycle</tspan> pour <tspan font-weight="bold" fill="#10b981">toutes les valeurs</tspan> simultanément :
     </text>
 
     <!-- SIMD Hardware Registers Visual -->
-    <g transform="translate(25, 95)">
+    <g transform="translate(25, 88)">
       <!-- Register A (256 bits = 4 x 64 bits) -->
       <g transform="translate(0, 0)">
-        <text x="0" y="-8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#7dd3fc">
+        <text x="0" y="12" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#7dd3fc">
           Registre Vectoriel A (256 bits / AVX2 / ARM NEON) :
         </text>
-        <rect x="0" y="0" width="440" height="42" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1.2"/>
+        <rect x="0" y="18" width="440" height="38" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1.2"/>
         <!-- 4 slots -->
-        <rect x="4" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="56" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[0] : 10</text>
-        <rect x="113" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="165" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[1] : 20</text>
-        <rect x="222" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="274" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[2] : 30</text>
-        <rect x="331" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="383" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[3] : 40</text>
+        <rect x="4" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="56" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[0] : 10</text>
+        <rect x="113" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="165" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[1] : 20</text>
+        <rect x="222" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="274" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[2] : 30</text>
+        <rect x="331" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="383" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">a[3] : 40</text>
       </g>
 
-      <!-- Operation Indicator -->
-      <g transform="translate(0, 50)">
-        <text x="220" y="16" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">
-          + (Opération vectorielle en parallèle)
+      <!-- Operation Indicator Badge (generously spaced between A and B) -->
+      <g transform="translate(0, 68)">
+        <rect x="90" y="0" width="260" height="26" rx="13" fill="#082f49" stroke="#38bdf8" stroke-width="1.2"/>
+        <circle cx="110" cy="13" r="8" fill="#0284c7"/>
+        <path d="M 106 13 L 114 13 M 110 9 L 110 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        <text x="126" y="17" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#38bdf8" text-anchor="start">
+          Addition vectorielle SIMD parallèle
         </text>
       </g>
 
       <!-- Register B (256 bits = 4 x 64 bits) -->
-      <g transform="translate(0, 75)">
-        <text x="0" y="-8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#7dd3fc">
+      <g transform="translate(0, 108)">
+        <text x="0" y="12" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#7dd3fc">
           Registre Vectoriel B (256 bits / AVX2 / ARM NEON) :
         </text>
-        <rect x="0" y="0" width="440" height="42" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1.2"/>
+        <rect x="0" y="18" width="440" height="38" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1.2"/>
         <!-- 4 slots -->
-        <rect x="4" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="56" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[0] : 1</text>
-        <rect x="113" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="165" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[1] : 2</text>
-        <rect x="222" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="274" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[2] : 3</text>
-        <rect x="331" y="4" width="104" height="34" rx="4" fill="#0284c7"/>
-        <text x="383" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[3] : 4</text>
+        <rect x="4" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="56" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[0] : 1</text>
+        <rect x="113" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="165" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[1] : 2</text>
+        <rect x="222" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="274" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[2] : 3</text>
+        <rect x="331" y="22" width="104" height="30" rx="4" fill="#0284c7"/>
+        <text x="383" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">b[3] : 4</text>
       </g>
 
-      <!-- Single Instruction Execution Arrow -->
-      <g transform="translate(0, 130)">
-        <rect x="0" y="0" width="440" height="32" rx="6" fill="#063228" stroke="#10b981" stroke-width="1.5"/>
-        <text x="220" y="21" font-family="monospace" font-size="13" font-weight="bold" fill="#34d399" text-anchor="middle">
+      <!-- Single Instruction Execution Banner -->
+      <g transform="translate(0, 174)">
+        <rect x="0" y="0" width="440" height="28" rx="6" fill="#063228" stroke="#10b981" stroke-width="1.5"/>
+        <text x="220" y="19" font-family="monospace" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">
           ⚡ 1 SEULE INSTRUCTION SIMD (VADD) EN 1 SEUL CYCLE !
         </text>
       </g>
 
       <!-- Result Register C -->
-      <g transform="translate(0, 180)">
-        <text x="0" y="-8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">
+      <g transform="translate(0, 214)">
+        <text x="0" y="12" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">
           Registre Vectoriel Résultat C = A + B :
         </text>
-        <rect x="0" y="0" width="440" height="42" rx="6" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+        <rect x="0" y="18" width="440" height="38" rx="6" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
         <!-- 4 slots -->
-        <rect x="4" y="4" width="104" height="34" rx="4" fill="#059669"/>
-        <text x="56" y="26" font-family="monospace" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">11</text>
-        <rect x="113" y="4" width="104" height="34" rx="4" fill="#059669"/>
-        <text x="165" y="26" font-family="monospace" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">22</text>
-        <rect x="222" y="4" width="104" height="34" rx="4" fill="#059669"/>
-        <text x="274" y="26" font-family="monospace" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">33</text>
-        <rect x="331" y="4" width="104" height="34" rx="4" fill="#059669"/>
-        <text x="383" y="26" font-family="monospace" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">44</text>
+        <rect x="4" y="22" width="104" height="30" rx="4" fill="#059669"/>
+        <text x="56" y="42" font-family="monospace" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">11</text>
+        <rect x="113" y="22" width="104" height="30" rx="4" fill="#059669"/>
+        <text x="165" y="42" font-family="monospace" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">22</text>
+        <rect x="222" y="22" width="104" height="30" rx="4" fill="#059669"/>
+        <text x="274" y="42" font-family="monospace" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">33</text>
+        <rect x="331" y="22" width="104" height="30" rx="4" fill="#059669"/>
+        <text x="383" y="42" font-family="monospace" font-size="12.5" font-weight="bold" fill="#ffffff" text-anchor="middle">44</text>
       </g>
     </g>
 
     <!-- Why SIMD requires contiguous memory -->
-    <g transform="translate(25, 345)">
+    <g transform="translate(25, 360)">
       <rect x="0" y="0" width="440" height="60" rx="8" fill="#08221c" stroke="#10b981" stroke-opacity="0.4"/>
-      <text x="18" y="23" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#34d399">
-        🎯 Débit x4 à x8 direct par cœur processeur :
+      <!-- Vector Fast-Forward Chevron Icon -->
+      <rect x="16" y="12" width="22" height="20" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+      <path d="M 22 17 L 26 22 L 22 27 M 26 17 L 30 22 L 26 27" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="44" y="26" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#34d399">
+        Débit x4 à x8 direct par cœur processeur :
       </text>
-      <text x="18" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+      <text x="18" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
         • Traite 4 nombres 64 bits (ou 8 nombres 32 bits) par cycle d'horloge.
       </text>
     </g>
 
     <!-- Essential condition footer -->
-    <g transform="translate(25, 415)">
+    <g transform="translate(25, 435)">
       <rect x="0" y="0" width="440" height="75" rx="8" fill="#0a1f29" stroke="#38bdf8" stroke-opacity="0.4"/>
-      <text x="18" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
-        💡 Pourquoi la mémoire contiguë est obligatoire :
+      <!-- Vector Bulb/Key Icon -->
+      <circle cx="26" cy="20" r="7" fill="#0369a1" stroke="#38bdf8" stroke-width="1"/>
+      <rect x="24" y="25" width="4" height="4" rx="1" fill="#38bdf8"/>
+      <text x="42" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
+        Pourquoi la mémoire contiguë est obligatoire :
       </text>
-      <text x="18" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+      <text x="18" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
         • Le CPU ne peut remplir un registre 256 bits que d'un bloc contigu.
       </text>
-      <text x="18" y="58" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
+      <text x="18" y="61" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">
         • Avec des objets éparpillés (listes Python), le SIMD est impossible !
       </text>
     </g>
